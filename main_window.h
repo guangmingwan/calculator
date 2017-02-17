@@ -18,5 +18,5 @@ private:
     Settings *settings;
     TitleBar *titlebar;
 
-    CommonWidget *common;
+    Common *common;
 };

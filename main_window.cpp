@@ -19,6 +19,6 @@ void MainWindow::initUI()
 {
     QString mode = settings->get_mode();
 
-    common = new CommonWidget();
+    common = new Common();
     this->setCentralWidget(common);
 }

@@ -1,18 +1,21 @@
-#ifndef COMMONLAYOUT_H
-#define COMMONLAYOUT_H
+#ifndef COMMON_H
+#define COMMON_H
 
 #include <QWidget>
 #include <QGridLayout>
 #include <QLabel>
 #include <QLineEdit>
+#include "algorithm.h"
 #include "text_button.h"
 
-class CommonWidget : public QWidget
+class Common : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit CommonWidget(QWidget *parent = 0);
+    explicit Common(QWidget *parent = 0);
+    void on_num_clicked(QString text);
+    void on_symbol_clicked(QString text);
 
 private:
     QGridLayout *layout = new QGridLayout;
@@ -37,6 +40,32 @@ private:
     TextButton *btn0 = new TextButton("0");
     TextButton *btnPoint = new TextButton(".");
     TextButton *btnIs = new TextButton("＝");
+
+    bool PointContinue = true;
+    bool NumContinue = true;
+    bool SymbolContinue = true;
+
+    Algorithm *algorithm;
+
+private slots:
+    void on_btn0_clicked();
+    void on_btn1_clicked();
+    void on_btn2_clicked();
+    void on_btn3_clicked();
+    void on_btn4_clicked();
+    void on_btn5_clicked();
+    void on_btn6_clicked();
+    void on_btn7_clicked();
+    void on_btn8_clicked();
+    void on_btn9_clicked();
+    void on_btnClear_clicked();
+    void on_btnBack_clicked();
+    void on_btnPoint_clicked();
+    void on_btnPlus_clicked();
+    void on_btnMinus_clicked();
+    void on_btnMult_clicked();
+    void on_btnDiv_clicked();
+    void on_btnIs_clicked();
 };
 
-#endif // COMMONLAYOUT_H
+#endif // COMMON_H
