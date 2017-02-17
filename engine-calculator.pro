@@ -6,8 +6,10 @@ TARGET = engine-calculator
 TEMPLATE = app
 CONFIG += link_pkgconfig c++11
 
-SOURCES  += main.cpp main_window.cpp settings.cpp widget/text_button.cpp widget/titlebar.cpp widget/common_widget.cpp 
+SOURCES  += main.cpp main_window.cpp settings.cpp widget/text_button.cpp widget/titlebar.cpp widget/common_widget.cpp \
+            algorithm.cpp
 
-HEADERS  += main_window.h settings.h widget/text_button.h widget/titlebar.h  widget/common_widget.h 
+HEADERS  += main_window.h settings.h widget/text_button.h widget/titlebar.h  widget/common_widget.h \
+            algorithm.h
 
 RESOURCES += resources.qrc
