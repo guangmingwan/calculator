@@ -5,7 +5,8 @@
 #include <QFile>
 
 TitleBar::TitleBar(QWidget *parent)
-    : QWidget(parent) 
+    : QWidget(parent) ,
+      m_icon(new QLabel)
 {
     closeButton = new QPushButton(this);
     closeButton->setObjectName("CloseButton");
@@ -43,13 +44,17 @@ TitleBar::TitleBar(QWidget *parent)
             menuButton->setVisible(true);
         }
     });
+    
+    m_icon->setStyleSheet("margin-left: 10px; margin-bottom: 10px;");
+    m_icon->setPixmap(QPixmap(":/resources/icon.png"));
 
     m_title = new QLabel("Calculator");
     m_title->setStyleSheet("font-size: 14px; margin-bottom: 10px;");
 
     QHBoxLayout *layout = new QHBoxLayout;
 
-    layout->setContentsMargins(28, 0, 5, 0);
+    layout->setContentsMargins(0, 0, 5, 0);
+    layout->addWidget(m_icon);
     layout->addWidget(m_title);
     layout->addStretch();
 

@@ -21,6 +21,7 @@ public:
     Settings *config = new Settings();
 
 private:
+    QLabel *m_icon;
     QMenu *m_menu;
     QLabel *m_title;
     QPushButton *menuButton;

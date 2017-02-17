@@ -6,7 +6,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     titlebar = new TitleBar();
 
     settings->set_default_style();
-    titlebar->setFixedHeight(36);
+    titlebar->setFixedHeight(40);
 
     this->setMenuWidget(titlebar);
 
