@@ -48,8 +48,8 @@ TitleBar::TitleBar(QWidget *parent)
     m_icon->setStyleSheet("margin-left: 10px; margin-bottom: 10px;");
     m_icon->setPixmap(QPixmap(":/resources/icon.png"));
 
-    m_title = new QLabel("Calculator");
-    m_title->setStyleSheet("font-size: 14px; margin-bottom: 10px;");
+    m_title = new QLabel("计算器");
+    m_title->setStyleSheet("font-size: 13px; margin-bottom: 10px;");
 
     QHBoxLayout *layout = new QHBoxLayout;
 
@@ -77,7 +77,8 @@ void TitleBar::initMenu()
 
     connect(m_menu, &QMenu::triggered, [this, aboutAction, history, style](QAction *action)
     {
-        if (style == action) {
+        if (style == action)
+        {
             config->switch_style();
         }
     });
@@ -92,7 +93,7 @@ void TitleBar::paintEvent(QPaintEvent *)
     QPoint bottomLeft(rect.x(), rect.y() + rect.height());
     QPoint bottomRight(rect.x() + rect.width(), rect.y() + rect.height());
 
-    QPen borderPen(QColor(0, 0, 0, 255*0.15));
+    QPen borderPen(QColor(0, 0, 0, 255*0.45));
     painter.setPen(borderPen);
     painter.drawLine(bottomLeft, bottomRight);
 }

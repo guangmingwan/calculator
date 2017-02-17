@@ -3,7 +3,6 @@
 Common::Common(QWidget *parent)
     : QWidget(parent)
 {
-    result->setEnabled(false);
     label->setAlignment(Qt::AlignRight);
     result->setAlignment(Qt::AlignRight);
 
@@ -58,12 +57,15 @@ Common::Common(QWidget *parent)
 
 void Common::on_num_clicked(QString text)
 {
-    if (NumContinue == false) {
+    if (NumContinue == false)
+    {
         label->clear();
         result->clear();
         result->insert(text);
         PointContinue = true;
-    }else {
+    }
+    else
+    {
         result->insert(text);
     }
 
@@ -77,7 +79,8 @@ void Common::on_symbol_clicked(QString text)
     QString::const_iterator i = get.end();
     i--;
 
-    if (*i == '+' || *i == '-' || *i == '*' || *i == '/') {
+    if (*i == '+' || *i == '-' || *i == '*' || *i == '/')
+    {
         result->backspace();
         result->insert(text);
     }
@@ -85,7 +88,8 @@ void Common::on_symbol_clicked(QString text)
     if (SymbolContinue == false)
         return;
 
-    if (result->text() == "") {
+    if (result->text() == "")
+    {
         result->insert("0");
     }
 
@@ -101,25 +105,30 @@ void Common::on_btnPoint_clicked()
     QString::const_iterator i = get.end();
     i--;
 
-    if (*i == '+' || *i == '-' || *i == '*' || *i == '/') {
+    if (*i == '+' || *i == '-' || *i == '*' || *i == '/')
+    {
         result->insert("0");
     }
 
-    if (result->text() == "") {
+    if (result->text() == "")
+    {
         result->insert("0.");
         PointContinue = false;
     }
 
-    if (*i == '.') {
+    if (*i == '.')
+    {
 
     }
 
-    if (PointContinue == true) {
+    if (PointContinue == true)
+    {
         result->insert(".");
         PointContinue = false;
     }
 
-    if (NumContinue == false) {
+    if (NumContinue == false)
+    {
         label->clear();
         result->clear();
         result->insert("0.");
@@ -138,7 +147,8 @@ void Common::on_btnPlus_clicked()
 
 void Common::on_btnMinus_clicked()
 {
-    if (result->text() == "") {
+    if (result->text() == "")
+    {
         on_symbol_clicked("-");
         return;
     }
@@ -175,14 +185,17 @@ void Common::on_btnBack_clicked()
 
     if (*i == '0' || *i == '1' || *i == '2' || *i == '3' ||
         *i == '4' || *i == '5' || *i == '6' || *i == '7' ||
-        *i == '8' || *i == '9') {
+        *i == '8' || *i == '9')
+    {
         result->backspace();
         NumContinue = true;
     }
+    
     if (*i == '.'){
         result->backspace();
         PointContinue = true;
     }
+    
     if (*i == '+' || *i == '-' || *i == '*' || *i == '/') {
         result->backspace();
         SymbolContinue = true;
@@ -190,10 +203,12 @@ void Common::on_btnBack_clicked()
     }
 
     i--;
-    if (*i == '+' || *i == '-' || *i == '*' || *i == '/') {
+    if (*i == '+' || *i == '-' || *i == '*' || *i == '/')
+    {
         SymbolContinue = false;
     }
-    if (*i == '.') {
+    if (*i == '.')
+    {
         SymbolContinue = false;
     }
 
@@ -252,7 +267,8 @@ void Common::on_btn9_clicked()
 
 void Common::on_btnIs_clicked()
 {
-    if(result->text() == "") {
+    if(result->text() == "")
+    {
         return;
     }
 
@@ -264,7 +280,6 @@ void Common::on_btnIs_clicked()
 
     result->setText(data);
     label->setToolTip(label->text());
-    //historydialog->text->append(label->text() + "=" + result->text());
 
-    NumContinue = false;  //input agin
+    NumContinue = false;
 }

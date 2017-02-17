@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     window.setWindowFlags(Qt::FramelessWindowHint | Qt::Window);
     window.move ((QApplication::desktop()->width() - window.width())/2,
                  (QApplication::desktop()->height() - window.height())/2);
-    window.resize(280, 410);
+    window.resize(280, 415);
     window.show();
 
     return app.exec();
