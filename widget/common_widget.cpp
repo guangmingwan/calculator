@@ -71,6 +71,8 @@ void Common::on_num_clicked(QString text)
 
     NumContinue = true;
     SymbolContinue = true;
+
+    result->setFocus();
 }
 
 void Common::on_symbol_clicked(QString text)
@@ -86,7 +88,11 @@ void Common::on_symbol_clicked(QString text)
     }
 
     if (SymbolContinue == false)
+    {
+        result->setFocus();
         return;
+    }
+
 
     if (result->text() == "")
     {
@@ -97,6 +103,7 @@ void Common::on_symbol_clicked(QString text)
     NumContinue = true;
     PointContinue = true;
     SymbolContinue = false;
+    result->setFocus();
 }
 
 void Common::on_btnPoint_clicked()
@@ -138,6 +145,8 @@ void Common::on_btnPoint_clicked()
 
     PointContinue = false;
     NumContinue = true;
+
+    result->setFocus();
 }
 
 void Common::on_btnPlus_clicked()
@@ -150,6 +159,7 @@ void Common::on_btnMinus_clicked()
     if (result->text() == "")
     {
         on_symbol_clicked("-");
+        result->setFocus();
         return;
     }
     on_symbol_clicked("-");
@@ -173,11 +183,17 @@ void Common::on_btnClear_clicked()
     PointContinue = true;
     NumContinue = true;
     SymbolContinue = true;
+
+    result->setFocus();
 }
 
 void Common::on_btnBack_clicked()
 {
-    if (result->text() == "") return;
+    if (result->text() == "")
+    {
+        result->setFocus();
+        return;
+    }
 
     QString text = result->text().replace("×", "*").replace("÷", "/");
     QString::const_iterator i = text.end();
@@ -213,6 +229,8 @@ void Common::on_btnBack_clicked()
     }
 
     NumContinue = true;
+
+    result->setFocus();
 }
 
 void Common::on_btn0_clicked()
@@ -282,4 +300,5 @@ void Common::on_btnIs_clicked()
     label->setToolTip(label->text());
 
     NumContinue = false;
+    result->setFocus();
 }
