@@ -1,4 +1,4 @@
-## Engine-Calculator
+## engine-calculator
 
 A simple calculator for you.
 
@@ -16,4 +16,4 @@ A simple calculator for you.
 
 ## License
 
-DDE Daemon is licensed under [GPLv3](LICENSE).
+Engine Calculator is licensed under [GPLv3](LICENSE).
