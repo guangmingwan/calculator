@@ -1,4 +1,5 @@
 #include "common_page.h"
+#include "algorithm.h"
 
 CommonPage::CommonPage(QWidget *parent)
     : QWidget(parent)
@@ -126,11 +127,11 @@ void CommonPage::on_number_button_clicked(QString text)
 
 void CommonPage::on_div_button_clicked()
 {
-
+    on_symbol_button_clicked("÷");
 }
 void CommonPage::on_mult_button_clicked()
 {
-
+    on_symbol_button_clicked("×");
 }
 void CommonPage::on_seven_button_clicked()
 {
@@ -148,7 +149,14 @@ void CommonPage::on_nine_button_clicked()
 }
 void CommonPage::on_minus_button_clicked()
 {
+    if (edit->text().isEmpty())
+    {
+        edit->insert("-");
+        StateSymbol = false;
+        return;
+    }
 
+    on_symbol_button_clicked("-");
 }
 
 void CommonPage::on_four_button_clicked()
@@ -167,7 +175,9 @@ void CommonPage::on_six_button_clicked()
 }
 
 void CommonPage::on_plus_button_clicked()
-{}
+{
+    on_symbol_button_clicked("+");
+}
 
 void CommonPage::on_one_button_clicked()
 {
@@ -226,7 +236,43 @@ void CommonPage::on_point_button_clicked()
     StateNumber = true;
 }
 
+void CommonPage::on_symbol_button_clicked(QString text)
+{
+    QString::const_iterator laster = edit->text().replace("×", "*").replace("÷", "/").end();
+    laster--;
+
+    if (*laster == '+' ||
+        *laster == '-' ||
+        *laster == '*' ||
+        *laster == '/')
+    {
+        edit->backspace();
+        edit->insert(text);
+    }
+
+    if (!StateSymbol)
+        return;
+
+    if (edit->text().isEmpty())
+        edit->insert("0");
+
+    edit->insert(text);
+    StateNumber = true;
+    StatePoint = true;
+    StateSymbol = false;
+}
+
 void CommonPage::on_equal_button_clicked()
 {
+    if (edit->text().isEmpty())
+        return;
 
+    Algorithm algorithm;
+    QString expression = edit->text().replace("×", "*").replace("÷", "/");
+    double get_result = algorithm.expressionCalculate(expression.toStdString());
+    QString data = QString::number(get_result);
+
+    edit->setText(data);
+
+    StateNumber = false;
 }

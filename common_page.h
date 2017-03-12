@@ -57,6 +57,7 @@ public slots:
     void on_equal_button_clicked();
 
     void on_number_button_clicked(QString text);
+    void on_symbol_button_clicked(QString text);
 
 private:
     void initUI();
