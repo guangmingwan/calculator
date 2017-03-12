@@ -23,5 +23,5 @@ void MainWindow::showCommonPage()
     commonPage = new CommonPage();
     layoutWidget->setLayout(commonPage->layout);
 
-    this->resize(280, 410);
+    this->resize(280, 380);
 }

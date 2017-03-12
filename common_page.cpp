@@ -3,6 +3,10 @@
 CommonPage::CommonPage(QWidget *parent)
     : QWidget(parent)
 {
+    StateNumber = true;
+    StatePoint = true;
+    StateSymbol = true;
+
     layout = new QGridLayout(this);
     edit = new DLineEdit();
     clearButton = new TextButton("AC");
@@ -54,6 +58,25 @@ CommonPage::CommonPage(QWidget *parent)
     layout->addWidget(equalButton, 5, 3, 2, 2);
 
     initUI();
+
+    connect(clearButton, SIGNAL(clicked(bool)), this, SLOT(on_clear_button_clicked()));
+    connect(backButton, SIGNAL(clicked(bool)), this, SLOT(on_back_button_clicked()));
+    connect(divButton, SIGNAL(clicked(bool)), this, SLOT(on_div_button_clicked()));
+    connect(multButton, SIGNAL(clicked(bool)), this, SLOT(on_mult_button_clicked()));
+    connect(minusButton, SIGNAL(clicked(bool)), this, SLOT(on_minus_button_clicked()));
+    connect(plusButton, SIGNAL(clicked(bool)), this, SLOT(on_plus_button_clicked()));
+    connect(pointButton, SIGNAL(clicked(bool)), this, SLOT(on_point_button_clicked()));
+    connect(sevenButton, SIGNAL(clicked(bool)), this, SLOT(on_seven_button_clicked()));
+    connect(eightButton, SIGNAL(clicked(bool)), this, SLOT(on_eight_button_clicked()));
+    connect(nineButton, SIGNAL(clicked(bool)), this, SLOT(on_nine_button_clicked()));
+    connect(fourButton, SIGNAL(clicked(bool)), this, SLOT(on_four_button_clicked()));
+    connect(fiveButton, SIGNAL(clicked(bool)), this, SLOT(on_five_button_clicked()));
+    connect(sixButton, SIGNAL(clicked(bool)), this, SLOT(on_six_button_clicked()));
+    connect(oneButton, SIGNAL(clicked(bool)), this, SLOT(on_one_button_clicked()));
+    connect(twoButton, SIGNAL(clicked(bool)), this, SLOT(on_two_button_clicked()));
+    connect(threeButton, SIGNAL(clicked(bool)), this, SLOT(on_three_button_clicked()));
+    connect(zeroButton, SIGNAL(clicked(bool)), this, SLOT(on_zero_button_clicked()));
+    connect(equalButton, SIGNAL(clicked(bool)), this, SLOT(on_equal_button_clicked()));
 }
 
 void CommonPage::initUI()
@@ -61,5 +84,149 @@ void CommonPage::initUI()
     layout->setMargin(0);
     layout->setSpacing(0);
 
-    edit->setFixedHeight(50);
+    edit->setEnabled(false);
+    edit->setFixedHeight(80);
+    edit->setAlignment(Qt::AlignRight);
+
+    edit->setStyleSheet("font-size: 28px;"
+                        "color: #000000;");
+
+    equalButton->setFixedHeight(equalButton->height()*2);
+    zeroButton->setFixedWidth(zeroButton->width()*2);
+}
+
+void CommonPage::on_clear_button_clicked()
+{
+    edit->clear();
+
+    StateNumber = true;
+    StatePoint = true;
+    StateSymbol = true;
+}
+
+void CommonPage::on_back_button_clicked()
+{
+    if (edit->text().isEmpty())
+        return;
+}
+
+void CommonPage::on_number_button_clicked(QString text)
+{
+    if (!StateNumber) {
+        edit->clear();
+        edit->insert(text);
+        StatePoint = true;
+    }else {
+        edit->insert(text);
+    }
+
+    StateNumber = true;
+    StateSymbol = true;
+}
+
+void CommonPage::on_div_button_clicked()
+{
+
+}
+void CommonPage::on_mult_button_clicked()
+{
+
+}
+void CommonPage::on_seven_button_clicked()
+{
+    on_number_button_clicked("7");
+}
+
+void CommonPage::on_eight_button_clicked()
+{
+    on_number_button_clicked("8");
+}
+
+void CommonPage::on_nine_button_clicked()
+{
+    on_number_button_clicked("9");
+}
+void CommonPage::on_minus_button_clicked()
+{
+
+}
+
+void CommonPage::on_four_button_clicked()
+{
+    on_number_button_clicked("4");
+}
+
+void CommonPage::on_five_button_clicked()
+{
+    on_number_button_clicked("5");
+}
+
+void CommonPage::on_six_button_clicked()
+{
+    on_number_button_clicked("6");
+}
+
+void CommonPage::on_plus_button_clicked()
+{}
+
+void CommonPage::on_one_button_clicked()
+{
+    on_number_button_clicked("1");
+}
+
+void CommonPage::on_two_button_clicked()
+{
+    on_number_button_clicked("2");
+}
+
+void CommonPage::on_three_button_clicked()
+{
+    on_number_button_clicked("3");
+}
+
+void CommonPage::on_zero_button_clicked()
+{
+    on_number_button_clicked("0");
+}
+
+void CommonPage::on_point_button_clicked()
+{
+    QString::const_iterator laster = edit->text().replace("×", "*").replace("÷", "/").end();
+    laster--;
+
+    if (edit->text().isEmpty())
+    {
+        edit->insert("0.");
+        StatePoint = false;
+    }
+
+    if (*laster == '+' ||
+        *laster == '-' ||
+        *laster == '*' ||
+        *laster == '/')
+    {
+        edit->insert("0");
+    }
+
+    if (StatePoint)
+    {
+        edit->insert(".");
+        StatePoint = false;
+    }
+
+    if (!StateNumber)
+    {
+        edit->clear();
+        edit->insert("0.");
+        StateNumber = true;
+        StateSymbol = false;
+    }
+
+    StatePoint = false;
+    StateNumber = true;
+}
+
+void CommonPage::on_equal_button_clicked()
+{
+
 }

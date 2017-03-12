@@ -19,19 +19,28 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */ 
+ */
 
 #include <QObject>
 #include <QString>
 #include <QPainter>
 #include <QLayout>
+#include <QFileInfoList>
 
 class Utils : public QObject
 {
+
 public:
+    static QFileInfoList getRecordingFileinfos();
+    static QSize getRenderSize(int fontSize, QString string);
+    static QString formatMillisecond(int millisecond);
     static QString getImagePath(QString imageName);
     static QString getQrcPath(QString imageName);
-    static QSize getRenderSize(int fontSize, QString string);
-    static void setFontSize(QPainter &painter, int textSize);
+    static QString getQssPath(QString qssName);
+    static QString getRecordingSaveDirectory();
+    static void addLayoutWidget(QLayout *layout, QWidget *widget);
+    static void applyQss(QWidget *widget, QString qssName);
     static void removeChildren(QWidget *widget);
+    static void removeLayoutChild(QLayout *layout, int index);
+    static void setFontSize(QPainter &painter, int textSize);
 };

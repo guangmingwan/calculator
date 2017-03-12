@@ -24,10 +24,12 @@
 #include <QString>
 #include <QDir>
 #include <QApplication>
+#include <QStandardPaths>
 #include <QDebug>
 #include <QFontMetrics>
 #include <QPainter>
 #include <QLayout>
+#include <QDateTime>
 #include <QWidget>
 #include "utils.h"
 
@@ -37,6 +39,21 @@ QString Utils::getImagePath(QString imageName)
     dir.cdUp();
 
     return QDir(dir.filePath("image")).filePath(imageName);
+}
+
+QString Utils::getQssPath(QString qssName)
+{
+    return QString(":/qss/%1").arg(qssName);
+}
+
+void Utils::applyQss(QWidget *widget, QString qssName)
+{
+    QFile file(Utils::getQssPath(qssName));
+    file.open(QFile::ReadOnly);
+    QTextStream filetext(&file);
+    QString stylesheet = filetext.readAll();
+    widget->setStyleSheet(stylesheet);
+    file.close();
 }
 
 QString Utils::getQrcPath(QString imageName)
@@ -75,4 +92,48 @@ void Utils::setFontSize(QPainter &painter, int textSize)
 void Utils::removeChildren(QWidget *widget)
 {
     qDeleteAll(widget->children());
+}
+
+void Utils::removeLayoutChild(QLayout *layout, int index)
+{
+    QLayoutItem *item = layout->itemAt(index);
+    if (item != 0) {
+        QWidget *widget = item->widget();
+        if (widget != NULL) {
+            widget->hide();
+            widget->setParent(NULL);
+            layout->removeWidget(widget);
+        }
+    }
+}
+
+void Utils::addLayoutWidget(QLayout *layout, QWidget *widget)
+{
+    layout->addWidget(widget);
+    widget->show();
+}
+
+QString Utils::formatMillisecond(int millisecond)
+{
+    if (millisecond / 1000 < 3600) {
+        return QDateTime::fromTime_t(millisecond / 1000).toUTC().toString("mm:ss");
+    } else {
+        return QDateTime::fromTime_t(millisecond / 1000).toUTC().toString("hh:mm:ss");
+    }
+}
+
+QString Utils::getRecordingSaveDirectory()
+{
+    QDir musicDirectory = QDir(QStandardPaths::standardLocations(QStandardPaths::MusicLocation).first());
+    QString subDirectory = tr("Recording");
+    musicDirectory.mkdir(subDirectory);
+
+    return musicDirectory.filePath(subDirectory);
+}
+
+QFileInfoList Utils::getRecordingFileinfos()
+{
+    QStringList filters;
+    filters << "*.wav";
+    return QDir(Utils::getRecordingSaveDirectory()).entryInfoList(filters, QDir::Files|QDir::NoDotAndDotDot);
 }
