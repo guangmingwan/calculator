@@ -61,27 +61,6 @@ QString Utils::getQrcPath(QString imageName)
     return QString(":/image/%1").arg(imageName);
 }
 
-QSize Utils::getRenderSize(int fontSize, QString string)
-{
-    QFont font;
-    font.setPointSize(fontSize);
-    QFontMetrics fm(font);
-
-    int width = 0;
-    int height = 0;
-    foreach (auto line, string.split("\n")) {
-        int lineWidth = fm.width(line);
-        int lineHeight = fm.height();
-
-        if (lineWidth > width) {
-            width = lineWidth;
-        }
-        height += lineHeight;
-    }
-
-    return QSize(width, height);
-}
-
 void Utils::setFontSize(QPainter &painter, int textSize)
 {
     QFont font = painter.font() ;
@@ -111,29 +90,4 @@ void Utils::addLayoutWidget(QLayout *layout, QWidget *widget)
 {
     layout->addWidget(widget);
     widget->show();
-}
-
-QString Utils::formatMillisecond(int millisecond)
-{
-    if (millisecond / 1000 < 3600) {
-        return QDateTime::fromTime_t(millisecond / 1000).toUTC().toString("mm:ss");
-    } else {
-        return QDateTime::fromTime_t(millisecond / 1000).toUTC().toString("hh:mm:ss");
-    }
-}
-
-QString Utils::getRecordingSaveDirectory()
-{
-    QDir musicDirectory = QDir(QStandardPaths::standardLocations(QStandardPaths::MusicLocation).first());
-    QString subDirectory = tr("Recording");
-    musicDirectory.mkdir(subDirectory);
-
-    return musicDirectory.filePath(subDirectory);
-}
-
-QFileInfoList Utils::getRecordingFileinfos()
-{
-    QStringList filters;
-    filters << "*.wav";
-    return QDir(Utils::getRecordingSaveDirectory()).entryInfoList(filters, QDir::Files|QDir::NoDotAndDotDot);
 }

@@ -94,6 +94,7 @@ void CommonPage::initUI()
 
     equalButton->setFixedHeight(equalButton->height()*2);
     zeroButton->setFixedWidth(zeroButton->width()*2);
+    equalButton->setObjectName("TextButtonIs");
 }
 
 void CommonPage::on_clear_button_clicked()
@@ -221,14 +222,12 @@ void CommonPage::on_point_button_clicked()
     if (StatePoint)
     {
         edit->insert(".");
-        StatePoint = false;
     }
 
     if (!StateNumber)
     {
         edit->clear();
         edit->insert("0.");
-        StateNumber = true;
         StateSymbol = false;
     }
 
@@ -248,6 +247,12 @@ void CommonPage::on_symbol_button_clicked(QString text)
     {
         edit->backspace();
         edit->insert(text);
+    }
+
+    if (*laster == '.')
+    {
+        edit->insert("0");
+        StateSymbol = true;
     }
 
     if (!StateSymbol)

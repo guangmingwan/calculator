@@ -1,0 +1,30 @@
+#TextButton {
+    background: #FFFFFF;
+    border: 1px solid #EDEDED;
+    color: #666666;
+    font-size: 16px;
+    font-weight: 400;
+}
+#TextButton:hover {
+    background: #D8D8D8;
+    border: 1px solid #D8D8D8;
+}
+#TextButton:pressed {
+    background: #ADADAD;
+    border: 1px solid #ADADAD;
+}
+
+#TextButtonIs {
+    border: 1px solid #2CA7F8;
+    background: #2CA7F8;
+    color: #FFFFFF;
+}
+#TextButtonIs:hover {
+    background: #42B4FF;
+    color: #FFFFFF;
+}
+
+#TextButtonIs:pressed {
+    background: #0092F2;
+    color: #FFFFFF;
+}
