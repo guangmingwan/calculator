@@ -24,6 +24,7 @@ MainWindow::MainWindow(DMainWindow *parent)
     });
 
     this->titleBar()->setWindowFlags(Qt::WindowTitleHint | Qt::WindowMinimizeButtonHint | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint);
+    this->setWindowFlags(Qt::FramelessWindowHint | Qt::Window);
     this->titleBar()->setMenu(menu);
 
     layoutWidget = new QWidget();
@@ -55,7 +56,7 @@ void MainWindow::showAboutDialog()
     aboutDlg->setVersion(QString("%1: 1.0").arg(tr("Version")));
     aboutDlg->setDescription(descriptionText + "\n");
     aboutDlg->setAcknowledgementLink(acknowledgementLink);
-    aboutDlg->exec();
+    aboutDlg->show();
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event)

@@ -29,6 +29,7 @@
 
 class Utils : public QObject
 {
+    Q_OBJECT
 
 public:
     static QFileInfoList getRecordingFileinfos();
@@ -43,4 +44,5 @@ public:
     static void removeChildren(QWidget *widget);
     static void removeLayoutChild(QLayout *layout, int index);
     static void setFontSize(QPainter &painter, int textSize);
+    static QChar getlasterChar(QString text);
 };

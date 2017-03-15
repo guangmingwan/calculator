@@ -18,4 +18,5 @@ Titlebar::Titlebar(QWidget *parnet)
 
     layout->addWidget(iconLabel);
     layout->addWidget(title);
+    layout->addStretch();
 }

@@ -91,3 +91,11 @@ void Utils::addLayoutWidget(QLayout *layout, QWidget *widget)
     layout->addWidget(widget);
     widget->show();
 }
+
+QChar Utils::getlasterChar(QString text)
+{
+    QString::const_iterator laster = text.replace("×", "*").replace("÷", "/").end();
+    laster--;
+
+    return *laster;
+}

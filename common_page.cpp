@@ -1,5 +1,6 @@
 #include "common_page.h"
 #include "algorithm.h"
+#include "utils.h"
 
 CommonPage::CommonPage(QWidget *parent)
     : QWidget(parent)
@@ -202,8 +203,7 @@ void CommonPage::on_zero_button_clicked()
 
 void CommonPage::on_point_button_clicked()
 {
-    QString::const_iterator laster = edit->text().replace("×", "*").replace("÷", "/").end();
-    laster--;
+    QChar laster = Utils::getlasterChar(edit->text());
 
     if (edit->text().isEmpty())
     {
@@ -211,10 +211,10 @@ void CommonPage::on_point_button_clicked()
         StatePoint = false;
     }
 
-    if (*laster == '+' ||
-        *laster == '-' ||
-        *laster == '*' ||
-        *laster == '/')
+    if (laster == '+' ||
+        laster == '-' ||
+        laster == '*' ||
+        laster == '/')
     {
         edit->insert("0");
     }
@@ -237,19 +237,18 @@ void CommonPage::on_point_button_clicked()
 
 void CommonPage::on_symbol_button_clicked(QString text)
 {
-    QString::const_iterator laster = edit->text().replace("×", "*").replace("÷", "/").end();
-    laster--;
+    QChar laster = Utils::getlasterChar(edit->text());
 
-    if (*laster == '+' ||
-        *laster == '-' ||
-        *laster == '*' ||
-        *laster == '/')
+    if (laster == '+' ||
+        laster == '-' ||
+        laster == '*' ||
+        laster == '/')
     {
         edit->backspace();
         edit->insert(text);
     }
 
-    if (*laster == '.')
+    if (laster == '.')
     {
         edit->insert("0");
         StateSymbol = true;
