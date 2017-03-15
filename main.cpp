@@ -13,7 +13,8 @@ int main(int argc, char *argv[])
     app.setTheme("light");
 
     MainWindow window;
-    Utils::applyQss(&window, "main.qss");
+
+    //Utils::applyQss(&window, "light.qss");
 
     window.setWindowTitle("engine-calculator");
     window.show();
