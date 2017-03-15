@@ -1,6 +1,7 @@
 #include "main_window.h"
 #include "titlebar.h"
 #include "utils.h"
+#include "settings.h"
 
 #include <DTitlebar>
 #include <QKeyEvent>
@@ -10,6 +11,7 @@
 MainWindow::MainWindow(DMainWindow *parent)
     : DMainWindow(parent)
 {
+    Settings *settings = new Settings();
     Titlebar *titlebar = new Titlebar();
     this->titleBar()->setCustomWidget(titlebar, Qt::AlignVCenter, false);
 
@@ -52,7 +54,7 @@ void MainWindow::showAboutDialog()
     aboutDlg->setWindowModality(Qt::WindowModal);
     aboutDlg->setWindowIcon(QPixmap::fromImage(QImage(Utils::getImagePath("logo.png"))));
     aboutDlg->setProductIcon(QPixmap::fromImage(QImage(Utils::getImagePath("logo.png"))));
-    aboutDlg->setProductName(tr("Engine Calculator"));
+    aboutDlg->setProductName(tr("Calculator"));
     aboutDlg->setVersion(QString("%1: 1.0").arg(tr("Version")));
     aboutDlg->setDescription(descriptionText + "\n");
     aboutDlg->setAcknowledgementLink(acknowledgementLink);
