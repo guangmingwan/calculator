@@ -1,3 +1,8 @@
+#editText {
+    font-size: 28px;
+    color: #FFFFFF;
+}
+
 #TextButton {
     font-size: 15px;
     background: #333333;

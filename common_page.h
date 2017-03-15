@@ -16,7 +16,7 @@ public:
     CommonPage(QWidget *parent = 0);
 
     QGridLayout *layout;
-    DLineEdit *edit;
+    DLineEdit *editText;
     TextButton *clearButton;
     TextButton *backButton;
     TextButton *divButton;

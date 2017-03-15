@@ -10,7 +10,7 @@ CommonPage::CommonPage(QWidget *parent)
     StateSymbol = true;
 
     layout = new QGridLayout(this);
-    edit = new DLineEdit();
+    editText = new DLineEdit();
     clearButton = new TextButton("AC");
     backButton = new TextButton("←");
     divButton = new TextButton("÷");
@@ -34,7 +34,7 @@ CommonPage::CommonPage(QWidget *parent)
     pointButton = new TextButton(".");
     equalButton = new TextButton("＝");
 
-    layout->addWidget(edit, 1, 0, 1, 4);
+    layout->addWidget(editText, 1, 0, 1, 4);
 
     layout->addWidget(clearButton, 2, 0);
     layout->addWidget(backButton, 2, 1);
@@ -86,12 +86,11 @@ void CommonPage::initUI()
     layout->setMargin(0);
     layout->setSpacing(0);
 
-    edit->setEnabled(false);
-    edit->setFixedHeight(80);
-    edit->setAlignment(Qt::AlignRight);
+    editText->setEnabled(false);
+    editText->setFixedHeight(80);
+    editText->setAlignment(Qt::AlignRight);
 
-    edit->setStyleSheet("font-size: 28px;"
-                        "color: #000000;");
+    editText->setObjectName("editTextText");
 
     equalButton->setFixedHeight(equalButton->height()*2);
     zeroButton->setFixedWidth(zeroButton->width()*2);
@@ -100,7 +99,7 @@ void CommonPage::initUI()
 
 void CommonPage::on_clear_button_clicked()
 {
-    edit->clear();
+    editText->clear();
 
     StateNumber = true;
     StatePoint = true;
@@ -109,18 +108,18 @@ void CommonPage::on_clear_button_clicked()
 
 void CommonPage::on_back_button_clicked()
 {
-    if (edit->text().isEmpty())
+    if (editText->text().isEmpty())
         return;
 }
 
 void CommonPage::on_number_button_clicked(QString text)
 {
     if (!StateNumber) {
-        edit->clear();
-        edit->insert(text);
+        editText->clear();
+        editText->insert(text);
         StatePoint = true;
     }else {
-        edit->insert(text);
+        editText->insert(text);
     }
 
     StateNumber = true;
@@ -151,9 +150,9 @@ void CommonPage::on_nine_button_clicked()
 }
 void CommonPage::on_minus_button_clicked()
 {
-    if (edit->text().isEmpty())
+    if (editText->text().isEmpty())
     {
-        edit->insert("-");
+        editText->insert("-");
         StateSymbol = false;
         return;
     }
@@ -203,11 +202,11 @@ void CommonPage::on_zero_button_clicked()
 
 void CommonPage::on_point_button_clicked()
 {
-    QChar laster = Utils::getlasterChar(edit->text());
+    QChar laster = Utils::getlasterChar(editText->text());
 
-    if (edit->text().isEmpty())
+    if (editText->text().isEmpty())
     {
-        edit->insert("0.");
+        editText->insert("0.");
         StatePoint = false;
     }
 
@@ -216,18 +215,18 @@ void CommonPage::on_point_button_clicked()
         laster == '*' ||
         laster == '/')
     {
-        edit->insert("0");
+        editText->insert("0");
     }
 
     if (StatePoint)
     {
-        edit->insert(".");
+        editText->insert(".");
     }
 
     if (!StateNumber)
     {
-        edit->clear();
-        edit->insert("0.");
+        editText->clear();
+        editText->insert("0.");
         StateSymbol = false;
     }
 
@@ -237,30 +236,30 @@ void CommonPage::on_point_button_clicked()
 
 void CommonPage::on_symbol_button_clicked(QString text)
 {
-    QChar laster = Utils::getlasterChar(edit->text());
+    QChar laster = Utils::getlasterChar(editText->text());
 
     if (laster == '+' ||
         laster == '-' ||
         laster == '*' ||
         laster == '/')
     {
-        edit->backspace();
-        edit->insert(text);
+        editText->backspace();
+        editText->insert(text);
     }
 
     if (laster == '.')
     {
-        edit->insert("0");
+        editText->insert("0");
         StateSymbol = true;
     }
 
     if (!StateSymbol)
         return;
 
-    if (edit->text().isEmpty())
-        edit->insert("0");
+    if (editText->text().isEmpty())
+        editText->insert("0");
 
-    edit->insert(text);
+    editText->insert(text);
     StateNumber = true;
     StatePoint = true;
     StateSymbol = false;
@@ -268,15 +267,15 @@ void CommonPage::on_symbol_button_clicked(QString text)
 
 void CommonPage::on_equal_button_clicked()
 {
-    if (edit->text().isEmpty())
+    if (editText->text().isEmpty())
         return;
 
     Algorithm algorithm;
-    QString expression = edit->text().replace("×", "*").replace("÷", "/");
+    QString expression = editText->text().replace("×", "*").replace("÷", "/");
     double get_result = algorithm.expressionCalculate(expression.toStdString());
     QString data = QString::number(get_result);
 
-    edit->setText(data);
+    editText->setText(data);
 
     StateNumber = false;
 }
