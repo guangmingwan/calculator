@@ -1,8 +1,8 @@
-#include "common_page.h"
+#include "simple_page.h"
 #include "algorithm.h"
 #include "utils.h"
 
-CommonPage::CommonPage(QWidget *parent)
+SimplePage::SimplePage(QWidget *parent)
     : QWidget(parent)
 {
     StateNumber = true;
@@ -10,9 +10,9 @@ CommonPage::CommonPage(QWidget *parent)
     StateSymbol = true;
 
     layout = new QGridLayout(this);
-    editText = new DLineEdit();
+    editText = new QLineEdit();
     clearButton = new TextButton("AC");
-    backButton = new TextButton("←");
+    backButton = new TextButton("+/_");
     divButton = new TextButton("÷");
     multButton = new TextButton("×");
 
@@ -81,7 +81,7 @@ CommonPage::CommonPage(QWidget *parent)
     connect(equalButton, SIGNAL(clicked(bool)), this, SLOT(on_equal_button_clicked()));
 }
 
-void CommonPage::initUI()
+void SimplePage::initUI()
 {
     layout->setMargin(0);
     layout->setSpacing(0);
@@ -90,14 +90,14 @@ void CommonPage::initUI()
     editText->setFixedHeight(80);
     editText->setAlignment(Qt::AlignRight);
 
-    editText->setObjectName("editTextText");
+    editText->setObjectName("editText");
 
     equalButton->setFixedHeight(equalButton->height()*2);
     zeroButton->setFixedWidth(zeroButton->width()*2);
     equalButton->setObjectName("TextButtonIs");
 }
 
-void CommonPage::on_clear_button_clicked()
+void SimplePage::on_clear_button_clicked()
 {
     editText->clear();
 
@@ -106,13 +106,13 @@ void CommonPage::on_clear_button_clicked()
     StateSymbol = true;
 }
 
-void CommonPage::on_back_button_clicked()
+void SimplePage::on_back_button_clicked()
 {
     if (editText->text().isEmpty())
         return;
 }
 
-void CommonPage::on_number_button_clicked(QString text)
+void SimplePage::on_number_button_clicked(QString text)
 {
     if (!StateNumber) {
         editText->clear();
@@ -126,29 +126,29 @@ void CommonPage::on_number_button_clicked(QString text)
     StateSymbol = true;
 }
 
-void CommonPage::on_div_button_clicked()
+void SimplePage::on_div_button_clicked()
 {
     on_symbol_button_clicked("÷");
 }
-void CommonPage::on_mult_button_clicked()
+void SimplePage::on_mult_button_clicked()
 {
     on_symbol_button_clicked("×");
 }
-void CommonPage::on_seven_button_clicked()
+void SimplePage::on_seven_button_clicked()
 {
     on_number_button_clicked("7");
 }
 
-void CommonPage::on_eight_button_clicked()
+void SimplePage::on_eight_button_clicked()
 {
     on_number_button_clicked("8");
 }
 
-void CommonPage::on_nine_button_clicked()
+void SimplePage::on_nine_button_clicked()
 {
     on_number_button_clicked("9");
 }
-void CommonPage::on_minus_button_clicked()
+void SimplePage::on_minus_button_clicked()
 {
     if (editText->text().isEmpty())
     {
@@ -160,49 +160,49 @@ void CommonPage::on_minus_button_clicked()
     on_symbol_button_clicked("-");
 }
 
-void CommonPage::on_four_button_clicked()
+void SimplePage::on_four_button_clicked()
 {
     on_number_button_clicked("4");
 }
 
-void CommonPage::on_five_button_clicked()
+void SimplePage::on_five_button_clicked()
 {
     on_number_button_clicked("5");
 }
 
-void CommonPage::on_six_button_clicked()
+void SimplePage::on_six_button_clicked()
 {
     on_number_button_clicked("6");
 }
 
-void CommonPage::on_plus_button_clicked()
+void SimplePage::on_plus_button_clicked()
 {
     on_symbol_button_clicked("+");
 }
 
-void CommonPage::on_one_button_clicked()
+void SimplePage::on_one_button_clicked()
 {
     on_number_button_clicked("1");
 }
 
-void CommonPage::on_two_button_clicked()
+void SimplePage::on_two_button_clicked()
 {
     on_number_button_clicked("2");
 }
 
-void CommonPage::on_three_button_clicked()
+void SimplePage::on_three_button_clicked()
 {
     on_number_button_clicked("3");
 }
 
-void CommonPage::on_zero_button_clicked()
+void SimplePage::on_zero_button_clicked()
 {
     on_number_button_clicked("0");
 }
 
-void CommonPage::on_point_button_clicked()
+void SimplePage::on_point_button_clicked()
 {
-    QChar laster = Utils::getlasterChar(editText->text());
+    QChar laster = Utils::getLasterChar(editText->text());
 
     if (editText->text().isEmpty())
     {
@@ -234,9 +234,9 @@ void CommonPage::on_point_button_clicked()
     StateNumber = true;
 }
 
-void CommonPage::on_symbol_button_clicked(QString text)
+void SimplePage::on_symbol_button_clicked(QString text)
 {
-    QChar laster = Utils::getlasterChar(editText->text());
+    QChar laster = Utils::getLasterChar(editText->text());
 
     if (laster == '+' ||
         laster == '-' ||
@@ -265,7 +265,7 @@ void CommonPage::on_symbol_button_clicked(QString text)
     StateSymbol = false;
 }
 
-void CommonPage::on_equal_button_clicked()
+void SimplePage::on_equal_button_clicked()
 {
     if (editText->text().isEmpty())
         return;

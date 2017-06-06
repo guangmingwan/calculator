@@ -3,6 +3,6 @@
 TextButton::TextButton(QString text)
 {
     this->setText(text);
-    this->setFixedSize(70, 55);
+    this->setFixedSize(60, 45);
     this->setObjectName("TextButton");
 }

@@ -3,20 +3,18 @@
 
 #include <QWidget>
 #include <QGridLayout>
-#include <dlineedit.h>
+#include <QLineEdit>
 #include "text_button.h"
 
-DWIDGET_USE_NAMESPACE
-
-class CommonPage : public QWidget
+class SimplePage : public QWidget
 {
     Q_OBJECT
 
 public:
-    CommonPage(QWidget *parent = 0);
+    SimplePage(QWidget *parent = 0);
 
     QGridLayout *layout;
-    DLineEdit *editText;
+    QLineEdit *editText;
     TextButton *clearButton;
     TextButton *backButton;
     TextButton *divButton;

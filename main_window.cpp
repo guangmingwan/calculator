@@ -11,54 +11,28 @@
 MainWindow::MainWindow(DMainWindow *parent)
     : DMainWindow(parent)
 {
+    mainWidget = new QWidget();
+
     Settings *settings = new Settings();
     Titlebar *titlebar = new Titlebar();
+
     this->titleBar()->setCustomWidget(titlebar, Qt::AlignVCenter, false);
-
-    menu = new QMenu();
-    aboutAction = new QAction(tr("About"), this);
-    quitAction = new QAction(tr("Quit"), this);
-    menu->addAction(aboutAction);
-    menu->addAction(quitAction);
-    connect(aboutAction, &QAction::triggered, this, &MainWindow::showAboutDialog);
-    connect(quitAction, &QAction::triggered, this, [=] {
-        QApplication::quit();
-    });
-
     this->titleBar()->setWindowFlags(Qt::WindowTitleHint | Qt::WindowMinimizeButtonHint | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint);
-    this->setWindowFlags(Qt::FramelessWindowHint | Qt::Window);
-    this->titleBar()->setMenu(menu);
 
-    layoutWidget = new QWidget();
-    this->setCentralWidget(layoutWidget);
+    setWindowFlags(Qt::FramelessWindowHint | Qt::Window);
+    setCentralWidget(mainWidget);
 
-    showCommonPage();
+    showSimplePage();
 }
 
-void MainWindow::showCommonPage()
+void MainWindow::showSimplePage()
 {
-    Utils::removeChildren(layoutWidget);
+    qDeleteAll(mainWidget->children());
 
-    commonPage = new CommonPage();
-    layoutWidget->setLayout(commonPage->layout);
+    simplePage = new SimplePage();
+    mainWidget->setLayout(simplePage->layout);
 
-    this->resize(280, 380);
-}
-
-void MainWindow::showAboutDialog()
-{
-    QString descriptionText = tr("A simple calculator for you.");
-    QString acknowledgementLink = "https://github.com/rekols";
-
-    auto *aboutDlg = new Dtk::Widget::DAboutDialog();
-    aboutDlg->setWindowModality(Qt::WindowModal);
-    aboutDlg->setWindowIcon(QPixmap::fromImage(QImage(Utils::getImagePath("logo.png"))));
-    aboutDlg->setProductIcon(QPixmap::fromImage(QImage(Utils::getImagePath("logo.png"))));
-    aboutDlg->setProductName(tr("Calculator"));
-    aboutDlg->setVersion(QString("%1: 1.0").arg(tr("Version")));
-    aboutDlg->setDescription(descriptionText + "\n");
-    aboutDlg->setAcknowledgementLink(acknowledgementLink);
-    aboutDlg->show();
+    this->setFixedSize(240, 345);
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
@@ -66,52 +40,52 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     switch (event->key())
     {
     case Qt::Key_0:
-        commonPage->zeroButton->clicked();
+        simplePage->zeroButton->clicked();
         break;
     case Qt::Key_1:
-        commonPage->oneButton->clicked();
+        simplePage->oneButton->clicked();
         break;
     case Qt::Key_2:
-        commonPage->twoButton->clicked();
+        simplePage->twoButton->clicked();
         break;
     case Qt::Key_3:
-        commonPage->threeButton->clicked();
+        simplePage->threeButton->clicked();
         break;
     case Qt::Key_4:
-        commonPage->fourButton->clicked();
+        simplePage->fourButton->clicked();
         break;
     case Qt::Key_5:
-        commonPage->fiveButton->clicked();
+        simplePage->fiveButton->clicked();
         break;
     case Qt::Key_6:
-        commonPage->sixButton->clicked();
+        simplePage->sixButton->clicked();
         break;
     case Qt::Key_7:
-        commonPage->sevenButton->clicked();
+        simplePage->sevenButton->clicked();
         break;
     case Qt::Key_8:
-        commonPage->eightButton->clicked();
+        simplePage->eightButton->clicked();
         break;
     case Qt::Key_9:
-        commonPage->nineButton->clicked();
+        simplePage->nineButton->clicked();
         break;
     case Qt::Key_Period:
-        commonPage->pointButton->clicked();
+        simplePage->pointButton->clicked();
         break;
     case Qt::Key_Enter:
-        commonPage->equalButton->clicked();
+        simplePage->equalButton->clicked();
         break;
     case Qt::Key_Plus:
-        commonPage->plusButton->clicked();
+        simplePage->plusButton->clicked();
         break;
     case Qt::Key_Minus:
-        commonPage->minusButton->clicked();
+        simplePage->minusButton->clicked();
         break;
     case Qt::Key_Asterisk:
-        commonPage->multButton->clicked();
+        simplePage->multButton->clicked();
         break;
     case Qt::Key_Slash:
-        commonPage->divButton->clicked();
+        simplePage->divButton->clicked();
         break;
     }
 }

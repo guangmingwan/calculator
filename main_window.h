@@ -2,8 +2,7 @@
 #define MAINWINDOW_H
 
 #include <DMainWindow>
-#include "common_page.h"
-#include <QMenu>
+#include "simple_page.h"
 
 DWIDGET_USE_NAMESPACE
 
@@ -16,16 +15,11 @@ public:
 
     void keyPressEvent(QKeyEvent *event);
 
-public slots:
-    void showCommonPage();
-    void showAboutDialog();
-
 private:
-    QWidget *layoutWidget;
-    CommonPage *commonPage;
-    QMenu *menu;
-    QAction *aboutAction;
-    QAction *quitAction;
+    QWidget *mainWidget;
+    SimplePage *simplePage;
+
+    void showSimplePage();
 };
 
 #endif

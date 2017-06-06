@@ -1,6 +1,8 @@
 #editText {
     font-size: 28px;
     color: #FFFFFF;
+    border: none;
+    border-style: none; 
 }
 
 #TextButton {
