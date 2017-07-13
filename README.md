@@ -1,6 +1,8 @@
-## Engine Calculator
+## Rekols Calculator
 
 A simple calculator for you.
+
+Thank you very much [SpeedCrunch](https://bitbucket.org/heldercorreia/speedcrunch) project, this project used a lot of his code.
 
 ### Build dependencies
 
@@ -20,5 +22,5 @@ A simple calculator for you.
 
 ## License
 
-Engine Calculator is licensed under [GPLv3](LICENSE).
+Rekols Calculator is licensed under [GPLv3](LICENSE).
 
