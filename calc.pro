@@ -22,7 +22,8 @@ SOURCES += src/main.cpp \
     src/text_button.cpp \
     src/titlebar.cpp \
     src/utils.cpp \
-    src/line_editor.cpp
+    src/line_editor.cpp \
+    src/scientific_mode.cpp
 
 HEADERS += \
     src/main_window.h \
@@ -30,4 +31,5 @@ HEADERS += \
     src/text_button.h \
     src/titlebar.h \
     src/utils.h \
-    src/line_editor.h
+    src/line_editor.h \
+    src/scientific_mode.h

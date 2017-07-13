@@ -5,6 +5,7 @@
 #include <QStackedLayout>
 #include "titlebar.h"
 #include "simple_mode.h"
+#include "scientific_mode.h"
 
 DWIDGET_USE_NAMESPACE
 
@@ -21,6 +22,7 @@ private:
     TitleBar *titleBar;
 
     SimpleMode *simpleMode;
+    ScientificMode *scMode;
 
     void initUI();
 
