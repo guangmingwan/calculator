@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QGridLayout>
 #include <QLineEdit>
+#include <QKeyEvent>
 #include "text_button.h"
 #include "core/evaluator.h"
 
@@ -36,13 +37,12 @@ private:
     TextButton *pointButton;
     TextButton *equalButton;
 
-    bool StateNumber;
-    bool StatePoint;
-    bool StateSymbol;
-
     Evaluator* m_evaluator;
 
     void initUI();
+
+protected:
+    void keyPressEvent(QKeyEvent *);
 
 public slots:
     void on_clear_button_clicked();

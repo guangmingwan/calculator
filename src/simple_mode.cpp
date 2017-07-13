@@ -9,7 +9,7 @@ SimpleMode::SimpleMode(QWidget *parent)
     layout = new QGridLayout(this);
     editText = new QLineEdit();
     clearButton = new TextButton("AC");
-    backButton = new TextButton("+/_");
+    backButton = new TextButton("←");
     divButton = new TextButton("÷");
     multButton = new TextButton("×");
 
@@ -32,7 +32,6 @@ SimpleMode::SimpleMode(QWidget *parent)
     equalButton = new TextButton("＝");
 
     m_evaluator = Evaluator::instance();;
-
 
     layout->addWidget(editText, 1, 0, 1, 4);
 
@@ -85,6 +84,12 @@ SimpleMode::SimpleMode(QWidget *parent)
     initUI();
 }
 
+void SimpleMode::keyPressEvent(QKeyEvent *event)
+{
+    if (event->key() == Qt::Key_Enter || event->key() == Qt::Key_Return)
+        equalButton->clicked(true);
+}
+
 void SimpleMode::initUI()
 {
     editText->setFixedHeight(80);
@@ -92,38 +97,31 @@ void SimpleMode::initUI()
 
     equalButton->setFixedHeight(equalButton->height()*2);
     zeroButton->setFixedWidth(zeroButton->width()*2);
+
+    equalButton->setObjectName("TextButtonIs");
+    clearButton->setStyleSheet("QPushButton { color: #2CA7F8; }");
 }
 
 void SimpleMode::on_clear_button_clicked()
 {
     editText->clear();
     editText->setFocus();
-
-    StateNumber = true;
-    StatePoint = true;
-    StateSymbol = true;
 }
 
 void SimpleMode::on_back_button_clicked()
 {
+    editText->setFocus();
+
     if (editText->text().isEmpty())
         return;
+
+    editText->backspace();
 }
 
 void SimpleMode::on_number_button_clicked(const QString &text)
 {
-    if (!StateNumber) {
-        editText->clear();
-        editText->insert(text);
-        StatePoint = true;
-    }else {
-        editText->insert(text);
-    }
-
+    editText->insert(text);
     editText->setFocus();
-
-    StateNumber = true;
-    StateSymbol = true;
 }
 
 void SimpleMode::on_div_button_clicked()
@@ -153,7 +151,6 @@ void SimpleMode::on_minus_button_clicked()
     if (editText->text().isEmpty())
     {
         editText->insert("-");
-        StateSymbol = false;
         return;
     }
 
@@ -202,71 +199,17 @@ void SimpleMode::on_zero_button_clicked()
 
 void SimpleMode::on_point_button_clicked()
 {
-    QChar laster = Utils::getLasterChar(editText->text());
-
-    if (editText->text().isEmpty())
-    {
-        editText->insert("0.");
-        StatePoint = false;
-    }
-
-    if (laster == '+' ||
-        laster == '-' ||
-        laster == '*' ||
-        laster == '/')
-    {
-        editText->insert("0");
-    }
-
-    if (StatePoint)
-    {
-        editText->insert(".");
-    }
-
-    if (!StateNumber)
-    {
-        editText->clear();
-        editText->insert("0.");
-        StateSymbol = false;
-    }
-
+    editText->insert(".");
     editText->setFocus();
-
-    StatePoint = false;
-    StateNumber = true;
 }
 
 void SimpleMode::on_symbol_button_clicked(const QString &text)
 {
-    QChar laster = Utils::getLasterChar(editText->text());
-
-    if (laster == '+' ||
-        laster == '-' ||
-        laster == '*' ||
-        laster == '/')
-    {
-        editText->backspace();
-        editText->insert(text);
-    }
-
-    if (laster == '.')
-    {
-        editText->insert("0");
-        StateSymbol = true;
-    }
-
-    if (!StateSymbol)
-        return;
-
     if (editText->text().isEmpty())
         editText->insert("0");
 
     editText->insert(text);
     editText->setFocus();
-
-    StateNumber = true;
-    StatePoint = true;
-    StateSymbol = false;
 }
 
 void SimpleMode::on_equal_button_clicked()
@@ -283,6 +226,4 @@ void SimpleMode::on_equal_button_clicked()
 
     editText->setText(result);
     editText->setFocus();
-
-    StateNumber = false;
 }

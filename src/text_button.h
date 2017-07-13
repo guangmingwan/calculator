@@ -1,9 +1,11 @@
 #ifndef TEXTBUTTON_H
 #define TEXTBUTTON_H
 
-#include <QPushButton>
+#include <dpushbutton.h>
 
-class TextButton : public QPushButton
+DWIDGET_USE_NAMESPACE
+
+class TextButton : public DPushButton
 {
     Q_OBJECT
 

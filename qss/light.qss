@@ -1,11 +1,14 @@
-#editText {
-    font-size: 28px;
+QLineEdit {
+    padding-left: 10px;
+    padding-right: 5px;
+    font-size: 25px;
     color: #000000;
+    border: 1px solid #FFFFFF;
 }
 
 #TextButton {
     background: #FFFFFF;
-    border: 1px solid #EFEFEF;
+    border: 1px solid #F1F1F1;
     color: #666666;
     font-size: 16px;
     font-weight: 400;
@@ -23,6 +26,8 @@
     border: 1px solid #2CA7F8;
     background: #2CA7F8;
     color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 400;
 }
 #TextButtonIs:hover {
     background: #42B4FF;
