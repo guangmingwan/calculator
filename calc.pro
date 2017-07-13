@@ -21,11 +21,13 @@ SOURCES += src/main.cpp \
     src/simple_mode.cpp \
     src/text_button.cpp \
     src/titlebar.cpp \
-    src/utils.cpp
+    src/utils.cpp \
+    src/line_editor.cpp
 
 HEADERS += \
     src/main_window.h \
     src/simple_mode.h \
     src/text_button.h \
     src/titlebar.h \
-    src/utils.h
+    src/utils.h \
+    src/line_editor.h

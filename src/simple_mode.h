@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include <QGridLayout>
-#include <QLineEdit>
+#include "line_editor.h"
 #include <QKeyEvent>
 #include "text_button.h"
 #include "core/evaluator.h"
@@ -17,7 +17,7 @@ public:
 
 private:
     QGridLayout *layout;
-    QLineEdit *editText;
+    LineEditor *editText;
     TextButton *clearButton;
     TextButton *backButton;
     TextButton *divButton;
