@@ -23,17 +23,22 @@ private:
     QWidget *mainWidget;
     QStackedLayout *layout;
     TitleBar *titleBar;
-
     SimpleMode *simpleMode;
     ScientificMode *scMode;
 
+    QAction *simpleAction;
+    QAction *scientificAction;
     QAction *clearRecord;
+    QAction *hideAction;
+    QAction *showAction;
     DSettings *config;
 
     void initUI();
     void switchToSimpleMode();
     void switchToScientificMode();
     void clearHistory();
+    void showKeyBoard();
+    void hideKeyBoard();
 
     QString histroyFilePath;
 

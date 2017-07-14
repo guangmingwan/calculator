@@ -11,6 +11,9 @@ DSettings::DSettings(QObject *parent)
     if (settings->value("mode").toString().isEmpty()) {
         settings->setValue("mode", "simple");
     }
+    if (settings->value("keyboard").toString().isEmpty()) {
+        settings->setValue("keyboard", "show");
+    }
 }
 
 QString DSettings::getDefaultMode()

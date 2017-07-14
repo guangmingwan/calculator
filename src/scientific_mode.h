@@ -17,11 +17,8 @@ public:
     ScientificMode(QWidget *parent = 0);
 
     ResultDisplay *display;
+    QLineEdit *editor;
 
-protected:
-    void keyPressEvent(QKeyEvent *);
-
-private:
     Evaluator* m_evaluator;
 
     QVBoxLayout *layout;
@@ -31,7 +28,6 @@ private:
     QHBoxLayout *layout3;
     QHBoxLayout *layout4;
     QLabel *state;
-    QLineEdit *editor;
 
     ScButton *btn7;
     ScButton *btn8;
@@ -72,6 +68,9 @@ private:
     ScButton *btnXis;
     ScButton *btnTan;
     ScButton *btnArctan;
+
+protected:
+    void keyPressEvent(QKeyEvent *);
 
 private slots:
     void on_equal_button_clicked();

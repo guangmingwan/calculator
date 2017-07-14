@@ -28,13 +28,6 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::initUI()
 {
-    QString defaultMode = config->getDefaultMode();
-
-    if (defaultMode == "simple")
-        switchToSimpleMode();
-    else
-        switchToScientificMode();
-
     QFile file(histroyFilePath);
     QTextStream out(&file);
     if (file.open(QFile::ReadOnly)) {
@@ -49,17 +42,44 @@ void MainWindow::initUI()
     this->titlebar()->setWindowFlags(Qt::WindowTitleHint | Qt::WindowMinimizeButtonHint | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint);
     this->titlebar()->setMenu(menu);
 
-    QAction *simpleAction = new QAction("简单模式", this);
-    QAction *scientificAction = new QAction("科学计算", this);
+    simpleAction = new QAction("简单模式", this);
+    scientificAction = new QAction("科学计算", this);
     clearRecord = new QAction("清除记录", this);
+    hideAction = new QAction("隐藏按键", this);
+    showAction = new QAction("显示按键", this);
 
     menu->addAction(simpleAction);
     menu->addAction(scientificAction);
     menu->addAction(clearRecord);
+    menu->addAction(hideAction);
+    menu->addAction(showAction);
+
+    if (config->getDefaultMode() == "simple") {
+        switchToSimpleMode();
+        simpleAction->setVisible(false);
+        scientificAction->setVisible(true);
+
+    }else {
+        switchToScientificMode();
+        simpleAction->setVisible(true);
+        scientificAction->setVisible(false);
+    }
+
+    if (config->settings->value("keyboard").toString() == "show") {
+        showAction->setVisible(false);
+        hideAction->setVisible(true);
+        showKeyBoard();
+    }else {
+        showAction->setVisible(true);
+        hideAction->setVisible(false);
+        hideKeyBoard();
+    }
 
     connect(simpleAction, &QAction::triggered, this, &MainWindow::switchToSimpleMode);
     connect(scientificAction, &QAction::triggered, this, &MainWindow::switchToScientificMode);
     connect(clearRecord, &QAction::triggered, this, &MainWindow::clearHistory);
+    connect(hideAction, &QAction::triggered, this, &MainWindow::hideKeyBoard);
+    connect(showAction, &QAction::triggered, this, &MainWindow::showKeyBoard);
 
     scMode->display->moveCursor(QTextCursor::End);
 }
@@ -67,8 +87,9 @@ void MainWindow::initUI()
 void MainWindow::switchToSimpleMode()
 {
     setFixedSize(260, 370);
-
     layout->setCurrentIndex(0);
+    simpleAction->setVisible(false);
+    scientificAction->setVisible(true);
 
     config->settings->setValue("mode", "simple");
 }
@@ -76,8 +97,10 @@ void MainWindow::switchToSimpleMode()
 void MainWindow::switchToScientificMode()
 {
     setFixedSize(550, 450);
-
     layout->setCurrentIndex(1);
+    scMode->editor->setFocus();
+    simpleAction->setVisible(true);
+    scientificAction->setVisible(false);
 
     config->settings->setValue("mode", "scientific");
 }
@@ -104,4 +127,94 @@ void MainWindow::clearHistory()
     }
 
     scMode->display->clear();
+}
+
+void MainWindow::showKeyBoard()
+{
+    config->settings->setValue("keyboard", "show");
+
+    hideAction->setVisible(true);
+    showAction->setVisible(false);
+    scMode->btn7->setVisible(true);
+    scMode->btn8->setVisible(true);
+    scMode->btn9->setVisible(true);
+    scMode->btnDiv->setVisible(true);
+    scMode->btnC->setVisible(true);
+    scMode->btnRoot->setVisible(true);
+    scMode->btnP->setVisible(true);
+    scMode->btnExp->setVisible(true);
+    scMode->btnLn->setVisible(true);
+    scMode->btn4->setVisible(true);
+    scMode->btn5->setVisible(true);
+    scMode->btn6->setVisible(true);
+    scMode->btnMult->setVisible(true);
+    scMode->btnE->setVisible(true);
+    scMode->btnS->setVisible(true);
+    scMode->btnAns->setVisible(true);
+    scMode->btnSin->setVisible(true);
+    scMode->btnArcsin->setVisible(true);
+    scMode->btn1->setVisible(true);
+    scMode->btn2->setVisible(true);
+    scMode->btn3->setVisible(true);
+    scMode->btnMinus->setVisible(true);
+    scMode->btnLeft->setVisible(true);
+    scMode->btnRight->setVisible(true);
+    scMode->btnX->setVisible(true);
+    scMode->btnCos->setVisible(true);
+    scMode->btnArccos->setVisible(true);
+    scMode->btn0->setVisible(true);
+    scMode->btnPoint->setVisible(true);
+    scMode->btnIs->setVisible(true);
+    scMode->btnPlus->setVisible(true);
+    scMode->btnMod->setVisible(true);
+    scMode->btnG->setVisible(true);
+    scMode->btnXis->setVisible(true);
+    scMode->btnTan->setVisible(true);
+    scMode->btnArctan->setVisible(true);
+
+    scMode->display->moveCursor(QTextCursor::End);
+}
+
+void MainWindow::hideKeyBoard()
+{
+    config->settings->setValue("keyboard", "hide");
+
+    hideAction->setVisible(false);
+    showAction->setVisible(true);
+    scMode->btn7->setVisible(false);
+    scMode->btn8->setVisible(false);
+    scMode->btn9->setVisible(false);
+    scMode->btnDiv->setVisible(false);
+    scMode->btnC->setVisible(false);
+    scMode->btnRoot->setVisible(false);
+    scMode->btnP->setVisible(false);
+    scMode->btnExp->setVisible(false);
+    scMode->btnLn->setVisible(false);
+    scMode->btn4->setVisible(false);
+    scMode->btn5->setVisible(false);
+    scMode->btn6->setVisible(false);
+    scMode->btnMult->setVisible(false);
+    scMode->btnE->setVisible(false);
+    scMode->btnS->setVisible(false);
+    scMode->btnAns->setVisible(false);
+    scMode->btnSin->setVisible(false);
+    scMode->btnArcsin->setVisible(false);
+    scMode->btn1->setVisible(false);
+    scMode->btn2->setVisible(false);
+    scMode->btn3->setVisible(false);
+    scMode->btnMinus->setVisible(false);
+    scMode->btnLeft->setVisible(false);
+    scMode->btnRight->setVisible(false);
+    scMode->btnX->setVisible(false);
+    scMode->btnCos->setVisible(false);
+    scMode->btnArccos->setVisible(false);
+    scMode->btn0->setVisible(false);
+    scMode->btnPoint->setVisible(false);
+    scMode->btnIs->setVisible(false);
+    scMode->btnPlus->setVisible(false);
+    scMode->btnMod->setVisible(false);
+    scMode->btnG->setVisible(false);
+    scMode->btnXis->setVisible(false);
+    scMode->btnTan->setVisible(false);
+    scMode->btnArctan->setVisible(false);
 }
