@@ -7,6 +7,7 @@
 #include "simple_mode.h"
 #include "scientific_mode.h"
 #include <QMenu>
+#include "dsettings.h"
 
 DWIDGET_USE_NAMESPACE
 
@@ -26,9 +27,10 @@ private:
     SimpleMode *simpleMode;
     ScientificMode *scMode;
 
-    void initUI();
+    QAction *clearRecord;
+    DSettings *config;
 
-private slots:
+    void initUI();
     void switchToSimpleMode();
     void switchToScientificMode();
 

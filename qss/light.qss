@@ -1,8 +1,8 @@
 #SimpleEdit {
     font-size: 25px;
     color: #000000;
-    border: 1px solid #F1F1F1;
-    background: #EAEAEA;
+    border: 1px solid #EAEAEA;
+    background: #EFEFEF;
 }
 
 #ScEdit {

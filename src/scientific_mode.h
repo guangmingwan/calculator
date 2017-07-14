@@ -16,6 +16,8 @@ class ScientificMode : public QWidget
 public:
     ScientificMode(QWidget *parent = 0);
 
+    ResultDisplay *display;
+
 protected:
     void keyPressEvent(QKeyEvent *);
 
@@ -29,7 +31,6 @@ private:
     QHBoxLayout *layout3;
     QHBoxLayout *layout4;
     QLabel *state;
-    ResultDisplay *display;
     QLineEdit *editor;
 
     ScButton *btn7;

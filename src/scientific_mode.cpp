@@ -134,6 +134,8 @@ ScientificMode::ScientificMode(QWidget *parent)
 
     setLayout(layout);
 
+    btnC->setStyleSheet("QPushButton { color: #2CA7F8; }");
+
     connect(editor, SIGNAL(autoCalculatorMessage(QString)), this, SLOT(showStateLabel(QString)));
     connect(editor, SIGNAL(autoCalculatorError(QString)), this, SLOT(showStateLabel(QString)));
     connect(editor, SIGNAL(textChanged(QString)), this, SLOT(lineEditTextChanged(QString)));

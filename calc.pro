@@ -25,7 +25,8 @@ SOURCES += src/main.cpp \
     src/line_editor.cpp \
     src/scientific_mode.cpp \
     src/sc_button.cpp \
-    src/result_display.cpp
+    src/result_display.cpp \
+    src/dsettings.cpp
 
 HEADERS += \
     src/main_window.h \
@@ -36,4 +37,5 @@ HEADERS += \
     src/line_editor.h \
     src/scientific_mode.h \
     src/sc_button.h \
-    src/result_display.h
+    src/result_display.h \
+    src/dsettings.h
