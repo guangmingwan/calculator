@@ -6,6 +6,7 @@
 #include "titlebar.h"
 #include "simple_mode.h"
 #include "scientific_mode.h"
+#include <QMenu>
 
 DWIDGET_USE_NAMESPACE
 
@@ -17,6 +18,7 @@ public:
     MainWindow(QWidget *parent = 0);
 
 private:
+    QMenu *menu;
     QWidget *mainWidget;
     QStackedLayout *layout;
     TitleBar *titleBar;
@@ -25,6 +27,10 @@ private:
     ScientificMode *scMode;
 
     void initUI();
+
+private slots:
+    void switchToSimpleMode();
+    void switchToScientificMode();
 
 };
 

@@ -1,8 +1,15 @@
-QLineEdit {
-    font-size: 25px;
+#ScEdit {
+    font-size: 21px;
     color: #000000;
     border: 1px solid #F1F1F1;
     background: #DADADA;
+}
+
+#SimpleEdit {
+    font-size: 25px;
+    color: #000000;
+    border: 1px solid #F1F1F1;
+    background: #FFFFFF;
 }
 
 QPlainTextEdit {

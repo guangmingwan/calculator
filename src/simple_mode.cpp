@@ -92,6 +92,7 @@ void SimpleMode::keyPressEvent(QKeyEvent *event)
 
 void SimpleMode::initUI()
 {
+    editText->setObjectName("SimpleEdit");
     editText->setFixedHeight(80);
     editText->setAlignment(Qt::AlignRight);
 

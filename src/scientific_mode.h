@@ -3,9 +3,9 @@
 
 #include <QWidget>
 #include <QVBoxLayout>
-#include <QPlainTextEdit>
 #include <QLabel>
 #include "line_editor.h"
+#include "result_display.h"
 #include "sc_button.h"
 #include "core/evaluator.h"
 
@@ -15,6 +15,9 @@ class ScientificMode : public QWidget
 
 public:
     ScientificMode(QWidget *parent = 0);
+
+protected:
+    void keyPressEvent(QKeyEvent *);
 
 private:
     Evaluator* m_evaluator;
@@ -26,8 +29,8 @@ private:
     QHBoxLayout *layout3;
     QHBoxLayout *layout4;
     QLabel *state;
-    QPlainTextEdit *edit;
-    LineEditor *editor;
+    ResultDisplay *display;
+    QLineEdit *editor;
 
     ScButton *btn7;
     ScButton *btn8;

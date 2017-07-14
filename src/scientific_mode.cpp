@@ -1,5 +1,6 @@
 #include "scientific_mode.h"
 #include <QToolTip>
+#include <QKeyEvent>
 
 typedef Quantity::Format Format;
 
@@ -15,8 +16,10 @@ ScientificMode::ScientificMode(QWidget *parent)
     layout3 = new QHBoxLayout;
     layout4 = new QHBoxLayout;
     state = new QLabel(this);
-    edit = new QPlainTextEdit;
+    display = new ResultDisplay;
     editor = new LineEditor;
+
+    editor->setObjectName("ScEdit");
 
     state->setPalette(QToolTip::palette());
     state->setAutoFillBackground(true);
@@ -37,10 +40,6 @@ ScientificMode::ScientificMode(QWidget *parent)
     layout->setMargin(0);
 
     layout->setContentsMargins(0, 0, 0, 0);
-
-    edit->setFixedHeight(190);
-    edit->setFocusPolicy(Qt::NoFocus);
-    editor->setObjectName("ScEditor");
 
     btn7 = new ScButton("7");
     btn8 = new ScButton("8");
@@ -124,7 +123,7 @@ ScientificMode::ScientificMode(QWidget *parent)
     layout4->addWidget(btnTan);
     layout4->addWidget(btnArctan);
 
-    layout->addWidget(edit);
+    layout->addWidget(display);
     layout->addLayout(topLayout);
     layout->addLayout(layout1);
     layout->addLayout(layout2);
@@ -153,14 +152,20 @@ void ScientificMode::on_equal_button_clicked()
     Quantity rn = m_evaluator->evalUpdateAns();
     QString result = DMath::format(rn, Format::Fixed());
 
-    edit->insertPlainText(editor->text());
-    edit->insertPlainText("\n");
-    edit->insertPlainText(QString("= %1").arg(result));
-    edit->insertPlainText("\n\n");
+    display->append(editor->text());
+    display->append(QString("= %1").arg(result));
+    display->append(QLatin1String(""));
 
     editor->setText(result);
     editor->setFocus();
-    edit->moveCursor(QTextCursor::EndOfLine);
+    display->moveCursor(QTextCursor::EndOfLine);
+}
+
+void ScientificMode::keyPressEvent(QKeyEvent *event)
+{
+    if (event->key() == Qt::Key_Enter || event->key() == Qt::Key_Return) {
+        btnIs->clicked(true);
+    }
 }
 
 void ScientificMode::showStateLabel(const QString &text)
