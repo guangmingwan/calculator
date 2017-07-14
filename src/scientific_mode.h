@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QVBoxLayout>
 #include <QPlainTextEdit>
+#include <QLabel>
 #include "line_editor.h"
 #include "sc_button.h"
 #include "core/evaluator.h"
@@ -24,6 +25,7 @@ private:
     QHBoxLayout *layout2;
     QHBoxLayout *layout3;
     QHBoxLayout *layout4;
+    QLabel *state;
     QPlainTextEdit *edit;
     LineEditor *editor;
 
@@ -69,6 +71,8 @@ private:
 
 private slots:
     void on_equal_button_clicked();
+    void showStateLabel(const QString &text);
+    void lineEditTextChanged(const QString &text);
 };
 
 #endif // SCIENTIFICMODE_H

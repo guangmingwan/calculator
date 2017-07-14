@@ -1,4 +1,5 @@
 #include "scientific_mode.h"
+#include <QToolTip>
 
 typedef Quantity::Format Format;
 
@@ -13,8 +14,14 @@ ScientificMode::ScientificMode(QWidget *parent)
     layout2 = new QHBoxLayout;
     layout3 = new QHBoxLayout;
     layout4 = new QHBoxLayout;
+    state = new QLabel(this);
     edit = new QPlainTextEdit;
     editor = new LineEditor;
+
+    state->setPalette(QToolTip::palette());
+    state->setAutoFillBackground(true);
+    state->setFrameShape(QFrame::Box);
+    state->hide();
 
     layout1->setSpacing(0);
     layout2->setSpacing(0);
@@ -31,7 +38,7 @@ ScientificMode::ScientificMode(QWidget *parent)
 
     layout->setContentsMargins(0, 0, 0, 0);
 
-    edit->setFixedHeight(210);
+    edit->setFixedHeight(190);
     edit->setFocusPolicy(Qt::NoFocus);
     editor->setObjectName("ScEditor");
 
@@ -128,6 +135,9 @@ ScientificMode::ScientificMode(QWidget *parent)
 
     setLayout(layout);
 
+    connect(editor, SIGNAL(autoCalculatorMessage(QString)), this, SLOT(showStateLabel(QString)));
+    connect(editor, SIGNAL(autoCalculatorError(QString)), this, SLOT(showStateLabel(QString)));
+    connect(editor, SIGNAL(textChanged(QString)), this, SLOT(lineEditTextChanged(QString)));
     connect(btnIs, SIGNAL(clicked(bool)), this, SLOT(on_equal_button_clicked()));
 }
 
@@ -151,4 +161,23 @@ void ScientificMode::on_equal_button_clicked()
     editor->setText(result);
     editor->setFocus();
     edit->moveCursor(QTextCursor::EndOfLine);
+}
+
+void ScientificMode::showStateLabel(const QString &text)
+{
+    state->setText(text);
+    state->adjustSize();
+    state->show();
+    state->raise();
+
+    const int height = state->height();
+    QPoint pos= mapFromGlobal(editor->mapToGlobal(QPoint(0, -height)));
+    state->move(pos);
+}
+
+void ScientificMode::lineEditTextChanged(const QString &text)
+{
+    if (text.isEmpty()) {
+        state->hide();
+    }
 }

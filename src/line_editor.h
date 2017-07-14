@@ -22,6 +22,10 @@ private:
 
 private slots:
     void autoCalculator();
+
+signals:
+    void autoCalculatorMessage(QString);
+    void autoCalculatorError(QString);
 };
 
 #endif // LINEEDITOR_H

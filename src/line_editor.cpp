@@ -24,8 +24,8 @@ void LineEditor::autoCalculator()
         }else {
             auto formatted = NumberFormatter::format(quantity);
             auto message = QString("当前结果: %1").arg(formatted);
-            this->setToolTip(message);
+            emit autoCalculatorMessage(message);
         }
     }else
-        this->setToolTip(m_evaluator->error());
+        emit autoCalculatorError(m_evaluator->error());
 }
