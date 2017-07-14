@@ -5,4 +5,6 @@ ScButton::ScButton(const QString &text)
     setText(text);
     setFixedHeight(45);
     setObjectName("TextButton");
+
+    setFocusPolicy(Qt::NoFocus);
 }

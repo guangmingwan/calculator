@@ -138,6 +138,116 @@ ScientificMode::ScientificMode(QWidget *parent)
     connect(editor, SIGNAL(autoCalculatorError(QString)), this, SLOT(showStateLabel(QString)));
     connect(editor, SIGNAL(textChanged(QString)), this, SLOT(lineEditTextChanged(QString)));
     connect(btnIs, SIGNAL(clicked(bool)), this, SLOT(on_equal_button_clicked()));
+
+    connect(btn7, &QPushButton::clicked, this, [=]{
+        editor->insert("7");
+    });
+    connect(btn8, &QPushButton::clicked, this, [=]{
+        editor->insert("8");
+    });
+    connect(btn9, &QPushButton::clicked, this, [=]{
+        editor->insert("9");
+    });
+    connect(btnDiv, &QPushButton::clicked, this, [=]{
+        editor->insert("/");
+    });
+    connect(btnC, &QPushButton::clicked, this, [=]{
+        editor->clear();
+    });
+    connect(btnRoot, &QPushButton::clicked, this, [=]{
+        editor->insert("sqrt(");
+    });
+    connect(btnP, &QPushButton::clicked, this, [=]{
+        editor->insert("pi");
+    });
+    connect(btnExp, &QPushButton::clicked, this, [=]{
+        editor->insert("exp(");
+    });
+    connect(btnLn, &QPushButton::clicked, this, [=]{
+        editor->insert("ln(");
+    });
+
+    connect(btn4, &QPushButton::clicked, this, [=]{
+        editor->insert("4");
+    });
+    connect(btn5, &QPushButton::clicked, this, [=]{
+        editor->insert("5");
+    });
+    connect(btn6, &QPushButton::clicked, this, [=]{
+        editor->insert("6");
+    });
+    connect(btnMult, &QPushButton::clicked, this, [=]{
+        editor->insert("*");
+    });
+    connect(btnE, &QPushButton::clicked, this, [=]{
+        editor->insert("e");
+    });
+    connect(btnS, &QPushButton::clicked, this, [=]{
+        editor->insert("^");
+    });
+    connect(btnAns, &QPushButton::clicked, this, [=]{
+        editor->insert("ans");
+    });
+    connect(btnSin, &QPushButton::clicked, this, [=]{
+        editor->insert("sin(");
+    });
+    connect(btnArcsin, &QPushButton::clicked, this, [=]{
+        editor->insert("arcsin(");
+    });
+
+    connect(btn1, &QPushButton::clicked, this, [=]{
+        editor->insert("1");
+    });
+    connect(btn2, &QPushButton::clicked, this, [=]{
+        editor->insert("2");
+    });
+    connect(btn3, &QPushButton::clicked, this, [=]{
+        editor->insert("3");
+    });
+    connect(btnMinus, &QPushButton::clicked, this, [=]{
+        editor->insert("-");
+    });
+    connect(btnLeft, &QPushButton::clicked, this, [=]{
+        editor->insert("(");
+    });
+    connect(btnRight, &QPushButton::clicked, this, [=]{
+        editor->insert(")");
+    });
+    connect(btnX, &QPushButton::clicked, this, [=]{
+        editor->insert("x");
+    });
+    connect(btnCos, &QPushButton::clicked, this, [=]{
+        editor->insert("cos(");
+    });
+    connect(btnArccos, &QPushButton::clicked, this, [=]{
+        editor->insert("arccos(");
+    });
+
+    connect(btn0, &QPushButton::clicked, this, [=]{
+        editor->insert("0");
+    });
+    connect(btnPoint, &QPushButton::clicked, this, [=]{
+        editor->insert(".");
+    });
+    connect(btnPlus, &QPushButton::clicked, this, [=]{
+        editor->insert("+");
+    });
+    connect(btnMod, &QPushButton::clicked, this, [=]{
+        editor->insert("%");
+    });
+    connect(btnG, &QPushButton::clicked, this, [=]{
+        editor->insert("!");
+    });
+    connect(btnXis, &QPushButton::clicked, this, [=]{
+        editor->insert("x=");
+    });
+    connect(btnTan, &QPushButton::clicked, this, [=]{
+        editor->insert("tan(");
+    });
+    connect(btnArctan, &QPushButton::clicked, this, [=]{
+        editor->insert("arctan(");
+    });
+
 }
 
 void ScientificMode::on_equal_button_clicked()
