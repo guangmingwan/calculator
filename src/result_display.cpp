@@ -4,6 +4,9 @@ ResultDisplay::ResultDisplay(QWidget *parent)
     : QPlainTextEdit(parent)
 {
     setViewportMargins(0, 0, 0, 0);
+    setBackgroundRole(QPalette::Base);
+    setLayoutDirection(Qt::LeftToRight);
+    setReadOnly(true);
     setFocusPolicy(Qt::NoFocus);
     setWordWrapMode(QTextOption::WrapAnywhere);
 

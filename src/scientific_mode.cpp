@@ -267,10 +267,10 @@ void ScientificMode::on_equal_button_clicked()
     display->append(QLatin1String(""));
 
     editor->setText(result);
-    editor->setFocus();
-    display->moveCursor(QTextCursor::EndOfLine);
+    display->moveCursor(QTextCursor::End);
 
     editor->clear();
+    editor->setFocus();
 }
 
 void ScientificMode::keyPressEvent(QKeyEvent *event)
