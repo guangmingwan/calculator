@@ -1,6 +1,6 @@
 DEFINES += SPEEDCRUNCH_VERSION=\\\"master\\\"
 
-QT += widgets help
+QT += widgets
 CONFIG += c++11
 
 DEPENDPATH += . \
