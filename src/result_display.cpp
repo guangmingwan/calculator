@@ -12,6 +12,8 @@ ResultDisplay::ResultDisplay(QWidget *parent)
     font.setPointSize(13);
     setFont(font);
 
+    setStyleSheet("QPlainTextEdit { background: #EAEAEA; }");
+
     m_count = 0;
 }
 
