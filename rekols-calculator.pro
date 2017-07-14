@@ -39,3 +39,12 @@ HEADERS += \
     src/sc_button.h \
     src/result_display.h \
     src/dsettings.h
+
+isEmpty(BINDIR):BINDIR=/usr/bin
+isEmpty(APPDIR):APPDIR=/usr/share/applications
+
+target.path = $$INSTROOT$$BINDIR
+desktop.path = $$INSTROOT$$APPDIR
+desktop.files = rekols-calculator.desktop
+
+INSTALLS += target desktop

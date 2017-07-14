@@ -1,0 +1,12 @@
+[Desktop Entry]
+Categories=Application;Utility;
+Encoding=UTF-8
+Exec=/usr/bin/rekols-calculator
+Icon=accessories-calculator
+Name=Rekols Calculator
+Name[zh_CN]=rekols-calculator.desktop
+Name[zh_TW]=Rekols计算器
+StartupNotify=false
+Terminal=false
+Type=Application
+X-MultipleArgs=false
