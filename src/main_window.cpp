@@ -24,7 +24,7 @@ MainWindow::MainWindow(QWidget *parent)
 void MainWindow::initUI()
 {
     //resize(260, 370);
-    resize(450, 400);
+    setFixedSize(550, 450);
 
     this->titlebar()->setCustomWidget(titleBar, Qt::AlignVCenter, false);
 }
