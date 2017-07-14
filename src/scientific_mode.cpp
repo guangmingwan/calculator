@@ -149,7 +149,7 @@ ScientificMode::ScientificMode(QWidget *parent)
         editor->insert("9");
     });
     connect(btnDiv, &QPushButton::clicked, this, [=]{
-        editor->insert("/");
+        editor->insert("÷");
     });
     connect(btnC, &QPushButton::clicked, this, [=]{
         editor->clear();
@@ -177,7 +177,7 @@ ScientificMode::ScientificMode(QWidget *parent)
         editor->insert("6");
     });
     connect(btnMult, &QPushButton::clicked, this, [=]{
-        editor->insert("*");
+        editor->insert("÷");
     });
     connect(btnE, &QPushButton::clicked, this, [=]{
         editor->insert("e");

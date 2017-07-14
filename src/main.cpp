@@ -15,6 +15,7 @@ int main(int argc, char *argv[])
     app.setTheme("light");
 
     MainWindow w;
+    w.setWindowIcon(QIcon(":/image/icon.svg"));
     w.show();
 
     DUtility::moveToCenter(&w);
