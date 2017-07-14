@@ -4,9 +4,8 @@ ResultDisplay::ResultDisplay(QWidget *parent)
     : QPlainTextEdit(parent)
 {
     setViewportMargins(0, 0, 0, 0);
-    //setReadOnly(true);
     setFocusPolicy(Qt::NoFocus);
-    //setWordWrapMode(QTextOption::WrapAnywhere);
+    setWordWrapMode(QTextOption::WrapAnywhere);
 
     QFont font;
     font.setFamily("Noto Mono");

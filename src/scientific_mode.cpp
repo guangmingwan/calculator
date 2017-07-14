@@ -269,6 +269,8 @@ void ScientificMode::on_equal_button_clicked()
     editor->setText(result);
     editor->setFocus();
     display->moveCursor(QTextCursor::EndOfLine);
+
+    editor->clear();
 }
 
 void ScientificMode::keyPressEvent(QKeyEvent *event)
