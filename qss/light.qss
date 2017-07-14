@@ -8,8 +8,8 @@
 #ScEdit {
     font-size: 18px;
     color: #000000;
-    border: 1px solid #F1F1F1;
-    background: #DADADA;
+    border: 1px solid #E2E2E2;
+    background: #E2E2E2;
 }
 
 #TextButton {
