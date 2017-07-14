@@ -1,6 +1,8 @@
 #include "main_window.h"
 #include <DTitlebar>
-#include <QDebug>
+#include <QApplication>
+#include <QFile>
+#include <QTextStream>
 
 MainWindow::MainWindow(QWidget *parent)
     : DMainWindow(parent)
@@ -12,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
     scMode = new ScientificMode;
     titleBar = new TitleBar;
     config = new DSettings();
+    histroyFilePath = QApplication::applicationDirPath() + "/history.txt";
 
     layout->addWidget(simpleMode);
     layout->addWidget(scMode);
@@ -31,6 +34,15 @@ void MainWindow::initUI()
     else
         switchToScientificMode();
 
+    QFile file(histroyFilePath);
+    QTextStream out(&file);
+    if (file.open(QFile::ReadOnly)) {
+        scMode->display->setPlainText(file.readAll());
+    }else {
+        file.open(QFile::WriteOnly);
+        out << "";
+    }
+    file.close();
 
     this->titlebar()->setCustomWidget(titleBar, Qt::AlignVCenter, false);
     this->titlebar()->setWindowFlags(Qt::WindowTitleHint | Qt::WindowMinimizeButtonHint | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint);
@@ -46,9 +58,9 @@ void MainWindow::initUI()
 
     connect(simpleAction, &QAction::triggered, this, &MainWindow::switchToSimpleMode);
     connect(scientificAction, &QAction::triggered, this, &MainWindow::switchToScientificMode);
-    connect(clearRecord, &QAction::triggered, this, [=]{
-        scMode->display->clear();
-    });
+    connect(clearRecord, &QAction::triggered, this, &MainWindow::clearHistory);
+
+    scMode->display->moveCursor(QTextCursor::End);
 }
 
 void MainWindow::switchToSimpleMode()
@@ -67,4 +79,28 @@ void MainWindow::switchToScientificMode()
     layout->setCurrentIndex(1);
 
     config->settings->setValue("mode", "scientific");
+}
+
+void MainWindow::closeEvent(QCloseEvent *)
+{
+    QFile file(histroyFilePath);
+
+    if (file.open(QFile::WriteOnly)) {
+        QTextStream out(&file);
+        out << scMode->display->toPlainText();
+    }
+
+    file.close();
+}
+
+void MainWindow::clearHistory()
+{
+    QFile file(histroyFilePath);
+
+    if (file.open(QFile::WriteOnly)) {
+        QTextStream out(&file);
+        out << "";
+    }
+
+    scMode->display->clear();
 }

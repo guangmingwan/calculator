@@ -1,10 +1,10 @@
 #include "dsettings.h"
-#include <QDir>
+#include <QApplication>
 
 DSettings::DSettings(QObject *parent)
     : QObject(parent)
 {
-    settings = new QSettings("config.ini", QSettings::IniFormat);
+    settings = new QSettings(QApplication::applicationDirPath() + "/config.ini", QSettings::IniFormat);
 
     if (settings->value("mode").toString().isEmpty()) {
         settings->setValue("mode", "simple");

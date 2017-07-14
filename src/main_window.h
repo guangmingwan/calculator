@@ -33,6 +33,12 @@ private:
     void initUI();
     void switchToSimpleMode();
     void switchToScientificMode();
+    void clearHistory();
+
+    QString histroyFilePath;
+
+protected:
+    void closeEvent(QCloseEvent *);
 
 };
 
