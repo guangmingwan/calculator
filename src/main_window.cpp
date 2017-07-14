@@ -3,6 +3,7 @@
 #include <QApplication>
 #include <QFile>
 #include <QTextStream>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
     : DMainWindow(parent)
@@ -14,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     scMode = new ScientificMode;
     titleBar = new TitleBar;
     config = new DSettings();
-    histroyFilePath = config->configPath();
+    histroyFilePath = config->configPath() + "/history.txt";
 
     layout->addWidget(simpleMode);
     layout->addWidget(scMode);
