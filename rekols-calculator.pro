@@ -5,13 +5,13 @@
 QT += core widgets gui
 
 TEMPLATE = app
-TARGET = calc
+TARGET = rekols-calculator
 INCLUDEPATH += .
 
 CONFIG += link_pkgconfig c++
 PKGCONFIG += dtkbase dtkwidget dtkutil
 
-RESOURCES = calc.qrc
+RESOURCES = rekols-calculator.qrc
 
 include(common.pri)
 
