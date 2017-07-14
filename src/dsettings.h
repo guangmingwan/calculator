@@ -11,9 +11,9 @@ class DSettings : public QObject
 public:
     DSettings(QObject *parent = 0);
 
-    QString getDefaultMode();
-
     QSettings *settings;
+    QString configPath();
+    QString getDefaultMode();
 };
 
 #endif // SETTTINGS_H

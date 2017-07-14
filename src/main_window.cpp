@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
     scMode = new ScientificMode;
     titleBar = new TitleBar;
     config = new DSettings();
-    histroyFilePath = QApplication::applicationDirPath() + "/history.txt";
+    histroyFilePath = config->configPath();
 
     layout->addWidget(simpleMode);
     layout->addWidget(scMode);
