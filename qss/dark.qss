@@ -9,12 +9,12 @@
 #ScEdit {
     font-size: 18px;
     color: #FFFFFF;
-    border: 1px solid #252525;
-    background: #252525;
+    border: 1px solid #1D1F21;
+    background: #1D1F21;
 }
 
 QPlainTextEdit {
-    background: #1D1F21;
+    background: #252525;
     color: #CCCCCC;
 }
 
