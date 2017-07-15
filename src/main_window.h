@@ -8,6 +8,7 @@
 #include "scientific_mode.h"
 #include <QMenu>
 #include "dsettings.h"
+#include <ddialog.h>
 
 DWIDGET_USE_NAMESPACE
 
@@ -25,6 +26,7 @@ private:
     TitleBar *titleBar;
     SimpleMode *simpleMode;
     ScientificMode *scMode;
+    DDialog *dialog;
 
     QAction *simpleAction;
     QAction *scientificAction;
@@ -47,6 +49,7 @@ private:
     void clearHistory();
     void showKeyBoard();
     void hideKeyBoard();
+    void dialogButtonClicked(int);
 
     QString histroyFilePath;
 

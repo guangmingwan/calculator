@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     scMode = new ScientificMode;
     titleBar = new TitleBar;
     config = new DSettings();
+    dialog = new DDialog("提示", "您确定要清除历史记录吗？", this);
     histroyFilePath = config->configPath() + "/history.txt";
 
     layout->addWidget(simpleMode);
@@ -31,6 +32,9 @@ void MainWindow::initUI()
     this->titlebar()->setCustomWidget(titleBar, Qt::AlignVCenter, false);
     this->titlebar()->setWindowFlags(Qt::WindowTitleHint | Qt::WindowMinimizeButtonHint | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint);
     this->titlebar()->setMenu(menu);
+
+    dialog->addButton("取消");
+    dialog->addButton("确定");
 
     simpleAction = new QAction("简单模式", this);
     scientificAction = new QAction("科学计算", this);
@@ -60,6 +64,7 @@ void MainWindow::initUI()
     connect(showAction, &QAction::triggered, this, &MainWindow::showKeyBoard);
     connect(lightAction, &QAction::triggered, this, &MainWindow::switchToLightTheme);
     connect(darkAction, &QAction::triggered, this, &MainWindow::switchToDarkTheme);
+    connect(dialog, &DDialog::buttonClicked, this, &MainWindow::dialogButtonClicked);
 
     scMode->display->moveCursor(QTextCursor::End);
 }
@@ -82,10 +87,12 @@ void MainWindow::initMode()
     if (config->getDefaultMode() == "simple") {
         simpleAction->setVisible(false);
         scientificAction->setVisible(true);
+        clearRecord->setVisible(false);
         switchToSimpleMode();
     }else {
         simpleAction->setVisible(true);
         scientificAction->setVisible(false);
+        clearRecord->setVisible(true);
         switchToScientificMode();
     }
 }
@@ -107,9 +114,11 @@ void MainWindow::initMenu()
         scientificAction->setVisible(true);
         showAction->setVisible(false);
         hideAction->setVisible(false);
+        clearRecord->setVisible(false);
     }else {
         simpleAction->setVisible(true);
         scientificAction->setVisible(false);
+        clearRecord->setVisible(true);
     }
 
     if (config->settings->value("theme").toString() == "light") {
@@ -199,14 +208,24 @@ void MainWindow::closeEvent(QCloseEvent *)
 
 void MainWindow::clearHistory()
 {
-    QFile file(histroyFilePath);
+    if (scMode->display->toPlainText().isEmpty())
+        return;
 
-    if (file.open(QFile::WriteOnly)) {
-        QTextStream out(&file);
-        out << "";
+    dialog->exec();
+}
+
+void MainWindow::dialogButtonClicked(int index)
+{
+    if (index == 1) {
+        QFile file(histroyFilePath);
+
+        if (file.open(QFile::WriteOnly)) {
+            QTextStream out(&file);
+            out << "";
+        }
+
+        scMode->display->clear();
     }
-
-    scMode->display->clear();
 }
 
 void MainWindow::showKeyBoard()
