@@ -1,7 +1,7 @@
 #SimpleEdit {
     font-size: 28px;
     color: #FFFFFF;
-    background: #191919;
+    background: #252525;
     border: none;
     border-style: none;
 }
@@ -9,8 +9,8 @@
 #ScEdit {
     font-size: 18px;
     color: #FFFFFF;
-    border: 1px solid #191919;
-    background: #191919;
+    border: 1px solid #252525;
+    background: #252525;
 }
 
 QPlainTextEdit {
@@ -20,8 +20,8 @@ QPlainTextEdit {
 
 #TextButton {
     font-size: 15px;
-    background: #202020;
-    border: 1px solid #232323;
+    background: #333333;
+    border: 1px solid #2D2D2D;
     color: #CCCCCC;
 }
 #TextButton:hover {
