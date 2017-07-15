@@ -12,17 +12,16 @@ int main(int argc, char *argv[])
     DApplication::loadDXcbPlugin();
     DApplication app(argc, argv);
 
-    const char *descriptionText = QT_TRANSLATE_NOOP("MainWindow", "Rekols计算器功能强大功能，支持各种表达式、公式输入");
+    const char *descriptionText = QT_TRANSLATE_NOOP("MainWindow", "Rekols计算器功能强大，支持各种表达式、公式输入");
     const QString acknowledgementLink = "https://github.com/rekols";
 
     if (app.setSingleInstance("rekols-calculator")) {
         app.setApplicationVersion("0.1");
 
-        app.setProductIcon(QPixmap::fromImage(QImage(":/image/icon.svg")));
+        app.setProductIcon(QPixmap::fromImage(QImage(":/image/icon.svg").scaled(80, 80)));
         app.setApplicationDescription(DApplication::translate("MainWindow", descriptionText) + "\n");
         app.setApplicationAcknowledgementPage(acknowledgementLink);
 
-        //app.setTheme("light");
         app.setWindowIcon(QIcon(":/image/icon.svg"));
 
         MainWindow w;
