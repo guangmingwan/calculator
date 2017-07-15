@@ -8,8 +8,8 @@
 #ScEdit {
     font-size: 18px;
     color: #000000;
-    border: 1px solid #C5C5C5;
-    background: #C5C5C5;
+    border: 1px solid #D8D8D8;
+    background: #D8D8D8;
 }
 
 QPlainTextEdit {
