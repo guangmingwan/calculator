@@ -9,13 +9,19 @@
 #ScEdit {
     font-size: 18px;
     color: #FFFFFF;
-    border: 1px solid #1D1F21;
-    background: #1D1F21;
+    border: 1px solid #2B2B2B;
+    background: #2B2B2B;
 }
 
 QPlainTextEdit {
     background: #252525;
     color: #CCCCCC;
+}
+
+#StateLabel {
+    background: #4A4A4A;
+    color: #CCCCCC;
+    border: 1px solid #2D2D2D;
 }
 
 #TextButton {

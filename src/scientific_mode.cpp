@@ -20,6 +20,7 @@ ScientificMode::ScientificMode(QWidget *parent)
     editor = new LineEditor;
 
     editor->setObjectName("ScEdit");
+    state->setObjectName("StateLabel");
 
     state->setPalette(QToolTip::palette());
     state->setAutoFillBackground(true);

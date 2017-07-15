@@ -17,6 +17,12 @@ QPlainTextEdit {
     color: #4F4D4D;
 }
 
+#StateLabel {
+    background: #8A8A8A;
+    color: #FFFFFF;
+    border: 1px solid #828282;
+}
+
 #TextButton {
     background: #FFFFFF;
     border: 1px solid #F1F1F1;
