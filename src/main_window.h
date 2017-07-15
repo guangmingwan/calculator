@@ -31,14 +31,19 @@ private:
     QAction *clearRecord;
     QAction *hideAction;
     QAction *showAction;
+    QAction *lightAction;
+    QAction *darkAction;
     DSettings *config;
 
     void initUI();
+    void initTheme();
     void initMode();
     void initMenu();
     void loadHistory();
     void switchToSimpleMode();
     void switchToScientificMode();
+    void switchToLightTheme();
+    void switchToDarkTheme();
     void clearHistory();
     void showKeyBoard();
     void hideKeyBoard();

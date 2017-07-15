@@ -14,6 +14,9 @@ DSettings::DSettings(QObject *parent)
     if (settings->value("keyboard").toString().isEmpty()) {
         settings->setValue("keyboard", "show");
     }
+    if (settings->value("theme").toString().isEmpty()) {
+        settings->setValue("theme", "light");
+    }
 }
 
 QString DSettings::getDefaultMode()

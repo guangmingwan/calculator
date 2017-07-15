@@ -22,18 +22,13 @@ int main(int argc, char *argv[])
         app.setApplicationDescription(DApplication::translate("MainWindow", descriptionText) + "\n");
         app.setApplicationAcknowledgementPage(acknowledgementLink);
 
-        app.setTheme("light");
+        //app.setTheme("light");
         app.setWindowIcon(QIcon(":/image/icon.svg"));
 
         MainWindow w;
         w.show();
 
         DUtility::moveToCenter(&w);
-
-        QFile file(":/qss/light.qss");
-        file.open(QFile::ReadOnly);
-        QTextStream qss(&file);
-        qApp->setStyleSheet(qss.readAll());
 
         return app.exec();
     }

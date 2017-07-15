@@ -1,0 +1,50 @@
+#SimpleEdit {
+    font-size: 28px;
+    color: #FFFFFF;
+    background: #191919;
+    border: none;
+    border-style: none;
+}
+
+#ScEdit {
+    font-size: 18px;
+    color: #FFFFFF;
+    border: 1px solid #191919;
+    background: #191919;
+}
+
+QPlainTextEdit {
+    background: #1D1F21;
+    color: #CCCCCC;
+}
+
+#TextButton {
+    font-size: 15px;
+    background: #202020;
+    border: 1px solid #232323;
+    color: #CCCCCC;
+}
+#TextButton:hover {
+    background: #414141;
+    border: 1px solid #414141;
+}
+#TextButton:pressed {
+    background: #252525;
+    border: 1px solid #414141;
+}
+
+#TextButtonIs {
+    font-size: 15px;
+    border: 1px solid #2CA7F8;
+    background: #2CA7F8;
+    color: #FFFFFF;
+}
+#TextButtonIs:hover {
+    background: #42B4FF;
+    color: #FFFFFF;
+}
+
+#TextButtonIs:pressed {
+    background: #0092F2;
+    color: #FFFFFF;
+}

@@ -3,7 +3,7 @@
 #include <QApplication>
 #include <QFile>
 #include <QTextStream>
-#include <QDebug>
+#include <dthememanager.h>
 
 MainWindow::MainWindow(QWidget *parent)
     : DMainWindow(parent)
@@ -37,13 +37,18 @@ void MainWindow::initUI()
     clearRecord = new QAction("清除记录", this);
     hideAction = new QAction("隐藏按键", this);
     showAction = new QAction("显示按键", this);
+    lightAction = new QAction("浅色主题", this);
+    darkAction = new QAction("深色主题", this);
 
     menu->addAction(simpleAction);
     menu->addAction(scientificAction);
     menu->addAction(clearRecord);
     menu->addAction(hideAction);
     menu->addAction(showAction);
+    menu->addAction(lightAction);
+    menu->addAction(darkAction);
 
+    initTheme();
     initMode();
     initMenu();
     loadHistory();
@@ -53,8 +58,23 @@ void MainWindow::initUI()
     connect(clearRecord, &QAction::triggered, this, &MainWindow::clearHistory);
     connect(hideAction, &QAction::triggered, this, &MainWindow::hideKeyBoard);
     connect(showAction, &QAction::triggered, this, &MainWindow::showKeyBoard);
+    connect(lightAction, &QAction::triggered, this, &MainWindow::switchToLightTheme);
+    connect(darkAction, &QAction::triggered, this, &MainWindow::switchToDarkTheme);
 
     scMode->display->moveCursor(QTextCursor::End);
+}
+
+void MainWindow::initTheme()
+{
+    if (config->settings->value("theme").toString() == "light") {
+        lightAction->setVisible(false);
+        darkAction->setVisible(true);
+        switchToLightTheme();
+    }else {
+        lightAction->setVisible(true);
+        darkAction->setVisible(false);
+        switchToDarkTheme();
+    }
 }
 
 void MainWindow::initMode()
@@ -81,6 +101,24 @@ void MainWindow::initMenu()
         hideAction->setVisible(false);
         hideKeyBoard();
     }
+
+    if (config->settings->value("mode").toString() == "simple") {
+        simpleAction->setVisible(false);
+        scientificAction->setVisible(true);
+        showAction->setVisible(false);
+        hideAction->setVisible(false);
+    }else {
+        simpleAction->setVisible(true);
+        scientificAction->setVisible(false);
+    }
+
+    if (config->settings->value("theme").toString() == "light") {
+        lightAction->setVisible(false);
+        darkAction->setVisible(true);
+    }else {
+        lightAction->setVisible(true);
+        darkAction->setVisible(false);
+    }
 }
 
 void MainWindow::loadHistory()
@@ -101,12 +139,9 @@ void MainWindow::switchToSimpleMode()
     setFixedSize(260, 370);
     layout->setCurrentIndex(0);
 
-    simpleAction->setVisible(false);
-    scientificAction->setVisible(true);
-    showAction->setVisible(false);
-    hideAction->setVisible(false);
-
     config->settings->setValue("mode", "simple");
+
+    initMenu();
 }
 
 void MainWindow::switchToScientificMode()
@@ -114,12 +149,40 @@ void MainWindow::switchToScientificMode()
     setFixedSize(550, 450);
     layout->setCurrentIndex(1);
     scMode->editor->setFocus();
-    simpleAction->setVisible(true);
-    scientificAction->setVisible(false);
-
-    initMenu();
 
     config->settings->setValue("mode", "scientific");
+
+    initMenu();
+}
+
+void MainWindow::switchToLightTheme()
+{
+    QFile file(":/qss/light.qss");
+    file.open(QFile::ReadOnly);
+    QTextStream qss(&file);
+    qApp->setStyleSheet(qss.readAll());
+    file.close();
+
+    DThemeManager::instance()->setTheme("light");
+
+    config->settings->setValue("theme", "light");
+
+    initMenu();
+}
+
+void MainWindow::switchToDarkTheme()
+{
+    QFile file(":/qss/dark.qss");
+    file.open(QFile::ReadOnly);
+    QTextStream qss(&file);
+    qApp->setStyleSheet(qss.readAll());
+    file.close();
+
+    DThemeManager::instance()->setTheme("dark");
+
+    config->settings->setValue("theme", "dark");
+
+    initMenu();
 }
 
 void MainWindow::closeEvent(QCloseEvent *)
@@ -234,4 +297,6 @@ void MainWindow::hideKeyBoard()
     scMode->btnXis->setVisible(false);
     scMode->btnTan->setVisible(false);
     scMode->btnArctan->setVisible(false);
+
+    scMode->editor->setFocus();
 }
