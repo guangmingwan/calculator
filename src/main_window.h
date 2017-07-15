@@ -34,6 +34,9 @@ private:
     DSettings *config;
 
     void initUI();
+    void initMode();
+    void initMenu();
+    void loadHistory();
     void switchToSimpleMode();
     void switchToScientificMode();
     void clearHistory();

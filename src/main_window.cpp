@@ -28,16 +28,6 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::initUI()
 {
-    QFile file(histroyFilePath);
-    QTextStream out(&file);
-    if (file.open(QFile::ReadOnly)) {
-        scMode->display->setPlainText(file.readAll());
-    }else {
-        file.open(QFile::WriteOnly);
-        out << "";
-    }
-    file.close();
-
     this->titlebar()->setCustomWidget(titleBar, Qt::AlignVCenter, false);
     this->titlebar()->setWindowFlags(Qt::WindowTitleHint | Qt::WindowMinimizeButtonHint | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint);
     this->titlebar()->setMenu(menu);
@@ -54,26 +44,9 @@ void MainWindow::initUI()
     menu->addAction(hideAction);
     menu->addAction(showAction);
 
-    if (config->getDefaultMode() == "simple") {
-        switchToSimpleMode();
-        simpleAction->setVisible(false);
-        scientificAction->setVisible(true);
-
-    }else {
-        switchToScientificMode();
-        simpleAction->setVisible(true);
-        scientificAction->setVisible(false);
-    }
-
-    if (config->settings->value("keyboard").toString() == "show") {
-        showAction->setVisible(false);
-        hideAction->setVisible(true);
-        showKeyBoard();
-    }else {
-        showAction->setVisible(true);
-        hideAction->setVisible(false);
-        hideKeyBoard();
-    }
+    initMode();
+    initMenu();
+    loadHistory();
 
     connect(simpleAction, &QAction::triggered, this, &MainWindow::switchToSimpleMode);
     connect(scientificAction, &QAction::triggered, this, &MainWindow::switchToScientificMode);
@@ -84,12 +57,54 @@ void MainWindow::initUI()
     scMode->display->moveCursor(QTextCursor::End);
 }
 
+void MainWindow::initMode()
+{
+    if (config->getDefaultMode() == "simple") {
+        simpleAction->setVisible(false);
+        scientificAction->setVisible(true);
+        switchToSimpleMode();
+    }else {
+        simpleAction->setVisible(true);
+        scientificAction->setVisible(false);
+        switchToScientificMode();
+    }
+}
+
+void MainWindow::initMenu()
+{
+    if (config->settings->value("keyboard").toString() == "show") {
+        showAction->setVisible(false);
+        hideAction->setVisible(true);
+        showKeyBoard();
+    }else {
+        showAction->setVisible(true);
+        hideAction->setVisible(false);
+        hideKeyBoard();
+    }
+}
+
+void MainWindow::loadHistory()
+{
+    QFile file(histroyFilePath);
+    QTextStream out(&file);
+    if (file.open(QFile::ReadOnly)) {
+        scMode->display->setPlainText(file.readAll());
+    }else {
+        file.open(QFile::WriteOnly);
+        out << "";
+    }
+    file.close();
+}
+
 void MainWindow::switchToSimpleMode()
 {
     setFixedSize(260, 370);
     layout->setCurrentIndex(0);
+
     simpleAction->setVisible(false);
     scientificAction->setVisible(true);
+    showAction->setVisible(false);
+    hideAction->setVisible(false);
 
     config->settings->setValue("mode", "simple");
 }
@@ -101,6 +116,8 @@ void MainWindow::switchToScientificMode()
     scMode->editor->setFocus();
     simpleAction->setVisible(true);
     scientificAction->setVisible(false);
+
+    initMenu();
 
     config->settings->setValue("mode", "scientific");
 }
