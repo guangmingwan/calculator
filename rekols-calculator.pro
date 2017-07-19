@@ -19,7 +19,6 @@ include(common.pri)
 SOURCES += src/main.cpp \
     src/main_window.cpp \
     src/simple_mode.cpp \
-    src/text_button.cpp \
     src/titlebar.cpp \
     src/utils.cpp \
     src/scientific_mode.cpp \
@@ -27,12 +26,12 @@ SOURCES += src/main.cpp \
     src/result_display.cpp \
     src/dsettings.cpp \
     src/simple_edit.cpp \
-    src/sc_edit.cpp
+    src/sc_edit.cpp \
+    src/simple_button.cpp
 
 HEADERS += \
     src/main_window.h \
     src/simple_mode.h \
-    src/text_button.h \
     src/titlebar.h \
     src/utils.h \
     src/scientific_mode.h \
@@ -40,7 +39,8 @@ HEADERS += \
     src/result_display.h \
     src/dsettings.h \
     src/simple_edit.h \
-    src/sc_edit.h
+    src/sc_edit.h \
+    src/simple_button.h
 
 isEmpty(BINDIR):BINDIR=/usr/bin
 isEmpty(APPDIR):APPDIR=/usr/share/applications

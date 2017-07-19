@@ -1,6 +1,6 @@
-#include "text_button.h"
+#include "simple_button.h"
 
-TextButton::TextButton(const QString &text)
+SimpleButton::SimpleButton(const QString &text)
 {
     setText(text);
     setFixedSize(65, 50);

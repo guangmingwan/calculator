@@ -5,7 +5,7 @@
 #include <QGridLayout>
 #include "simple_edit.h"
 #include <QKeyEvent>
-#include "text_button.h"
+#include "simple_button.h"
 #include "core/evaluator.h"
 
 class SimpleMode : public QWidget
@@ -18,24 +18,24 @@ public:
 private:
     QGridLayout *layout;
     SimpleEdit *editText;
-    TextButton *clearButton;
-    TextButton *backButton;
-    TextButton *divButton;
-    TextButton *multButton;
-    TextButton *sevenButton;
-    TextButton *eightButton;
-    TextButton *nineButton;
-    TextButton *minusButton;
-    TextButton *fourButton;
-    TextButton *fiveButton;
-    TextButton *sixButton;
-    TextButton *plusButton;
-    TextButton *oneButton;
-    TextButton *twoButton;
-    TextButton *threeButton;
-    TextButton *zeroButton;
-    TextButton *pointButton;
-    TextButton *equalButton;
+    SimpleButton *clearButton;
+    SimpleButton *backButton;
+    SimpleButton *divButton;
+    SimpleButton *multButton;
+    SimpleButton *sevenButton;
+    SimpleButton *eightButton;
+    SimpleButton *nineButton;
+    SimpleButton *minusButton;
+    SimpleButton *fourButton;
+    SimpleButton *fiveButton;
+    SimpleButton *sixButton;
+    SimpleButton *plusButton;
+    SimpleButton *oneButton;
+    SimpleButton *twoButton;
+    SimpleButton *threeButton;
+    SimpleButton *zeroButton;
+    SimpleButton *pointButton;
+    SimpleButton *equalButton;
 
     Evaluator* m_evaluator;
 

@@ -8,28 +8,28 @@ SimpleMode::SimpleMode(QWidget *parent)
 {
     layout = new QGridLayout(this);
     editText = new SimpleEdit();
-    clearButton = new TextButton("AC");
-    backButton = new TextButton("←");
-    divButton = new TextButton("÷");
-    multButton = new TextButton("×");
+    clearButton = new SimpleButton("AC");
+    backButton = new SimpleButton("←");
+    divButton = new SimpleButton("÷");
+    multButton = new SimpleButton("×");
 
-    sevenButton = new TextButton("7");
-    eightButton = new TextButton("8");
-    nineButton = new TextButton("9");
-    minusButton = new TextButton("－");
+    sevenButton = new SimpleButton("7");
+    eightButton = new SimpleButton("8");
+    nineButton = new SimpleButton("9");
+    minusButton = new SimpleButton("－");
 
-    fourButton = new TextButton("4");
-    fiveButton = new TextButton("5");
-    sixButton = new TextButton("6");
-    plusButton = new TextButton("＋");
+    fourButton = new SimpleButton("4");
+    fiveButton = new SimpleButton("5");
+    sixButton = new SimpleButton("6");
+    plusButton = new SimpleButton("＋");
 
-    oneButton = new TextButton("1");
-    twoButton = new TextButton("2");
-    threeButton = new TextButton("3");
+    oneButton = new SimpleButton("1");
+    twoButton = new SimpleButton("2");
+    threeButton = new SimpleButton("3");
 
-    zeroButton = new TextButton("0");
-    pointButton = new TextButton(".");
-    equalButton = new TextButton("＝");
+    zeroButton = new SimpleButton("0");
+    pointButton = new SimpleButton(".");
+    equalButton = new SimpleButton("＝");
 
     m_evaluator = Evaluator::instance();;
 
@@ -99,7 +99,7 @@ void SimpleMode::initUI()
     equalButton->setFixedHeight(equalButton->height()*2);
     zeroButton->setFixedWidth(zeroButton->width()*2);
 
-    equalButton->setObjectName("TextButtonIs");
+    equalButton->setObjectName("SimpleButtonIs");
     clearButton->setStyleSheet("QPushButton { color: #2CA7F8; }");
 }
 
