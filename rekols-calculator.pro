@@ -26,7 +26,8 @@ SOURCES += src/main.cpp \
     src/scientific_mode.cpp \
     src/sc_button.cpp \
     src/result_display.cpp \
-    src/dsettings.cpp
+    src/dsettings.cpp \
+    src/simple_edit.cpp
 
 HEADERS += \
     src/main_window.h \
@@ -38,7 +39,8 @@ HEADERS += \
     src/scientific_mode.h \
     src/sc_button.h \
     src/result_display.h \
-    src/dsettings.h
+    src/dsettings.h \
+    src/simple_edit.h
 
 isEmpty(BINDIR):BINDIR=/usr/bin
 isEmpty(APPDIR):APPDIR=/usr/share/applications

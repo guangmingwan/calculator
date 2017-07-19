@@ -22,6 +22,7 @@ private:
 
 private slots:
     void autoCalculator();
+    void changeFontSize();
 
 signals:
     void autoCalculatorMessage(QString);
