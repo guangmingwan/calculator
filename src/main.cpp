@@ -17,12 +17,11 @@ int main(int argc, char *argv[])
 
     if (app.setSingleInstance("rekols-calculator")) {
         app.setApplicationVersion("0.1");
-
         app.setProductIcon(QPixmap::fromImage(QImage(":/image/icon.svg").scaled(80, 80)));
         app.setApplicationDescription(DApplication::translate("MainWindow", descriptionText) + "\n");
         app.setApplicationAcknowledgementPage(acknowledgementLink);
-
         app.setWindowIcon(QIcon(":/image/icon.svg"));
+        app.loadTranslator();
 
         MainWindow w;
         w.show();
