@@ -6,7 +6,6 @@ LineEditor::LineEditor(QWidget *parent)
     m_evaluator = Evaluator::instance();
 
     connect(this, &QLineEdit::textChanged, this, &LineEditor::autoCalculator);
-    connect(this, &QLineEdit::textChanged, this, &LineEditor::changeFontSize);
 }
 
 void LineEditor::autoCalculator()
@@ -29,19 +28,4 @@ void LineEditor::autoCalculator()
         }
     }else
         emit autoCalculatorError(m_evaluator->error());
-}
-
-void LineEditor::changeFontSize()
-{
-    QFont font;
-
-    if (text().size() <= 10) {
-        font.setPointSize(20);
-    } else if (text().size() > 10) {
-        font.setPointSize(15);
-    } else if (text().size() > 15) {
-        font.setPointSize(10);
-    }
-
-    this->setFont(font);
 }
