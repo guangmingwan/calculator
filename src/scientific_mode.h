@@ -4,7 +4,7 @@
 #include <QWidget>
 #include <QVBoxLayout>
 #include <QLabel>
-#include "line_editor.h"
+#include "sc_edit.h"
 #include "result_display.h"
 #include "sc_button.h"
 #include "core/evaluator.h"
@@ -17,7 +17,7 @@ public:
     ScientificMode(QWidget *parent = 0);
 
     ResultDisplay *display;
-    QLineEdit *editor;
+    ScEdit *editor;
 
     Evaluator* m_evaluator;
 

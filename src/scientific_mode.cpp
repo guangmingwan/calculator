@@ -17,7 +17,7 @@ ScientificMode::ScientificMode(QWidget *parent)
     layout4 = new QHBoxLayout;
     state = new QLabel(this);
     display = new ResultDisplay;
-    editor = new LineEditor;
+    editor = new ScEdit;
 
     editor->setObjectName("ScEdit");
     state->setObjectName("StateLabel");

@@ -1,14 +1,14 @@
-#include "line_editor.h"
+#include "sc_edit.h"
 
-LineEditor::LineEditor(QWidget *parent)
+ScEdit::ScEdit(QWidget *parent)
     : QLineEdit(parent)
 {
     m_evaluator = Evaluator::instance();
 
-    connect(this, &QLineEdit::textChanged, this, &LineEditor::autoCalculator);
+    connect(this, &QLineEdit::textChanged, this, &ScEdit::autoCalculator);
 }
 
-void LineEditor::autoCalculator()
+void ScEdit::autoCalculator()
 {
     const auto str = m_evaluator->autoFix(this->text());
 

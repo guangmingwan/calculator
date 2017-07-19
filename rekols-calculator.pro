@@ -22,12 +22,12 @@ SOURCES += src/main.cpp \
     src/text_button.cpp \
     src/titlebar.cpp \
     src/utils.cpp \
-    src/line_editor.cpp \
     src/scientific_mode.cpp \
     src/sc_button.cpp \
     src/result_display.cpp \
     src/dsettings.cpp \
-    src/simple_edit.cpp
+    src/simple_edit.cpp \
+    src/sc_edit.cpp
 
 HEADERS += \
     src/main_window.h \
@@ -35,12 +35,12 @@ HEADERS += \
     src/text_button.h \
     src/titlebar.h \
     src/utils.h \
-    src/line_editor.h \
     src/scientific_mode.h \
     src/sc_button.h \
     src/result_display.h \
     src/dsettings.h \
-    src/simple_edit.h
+    src/simple_edit.h \
+    src/sc_edit.h
 
 isEmpty(BINDIR):BINDIR=/usr/bin
 isEmpty(APPDIR):APPDIR=/usr/share/applications

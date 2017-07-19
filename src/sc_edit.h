@@ -1,5 +1,5 @@
-#ifndef LINEEDITOR_H
-#define LINEEDITOR_H
+#ifndef SCEDIT_H
+#define SCEDIT_H
 
 #include <QLineEdit>
 
@@ -10,12 +10,12 @@
 #include "core/settings.h"
 #include "core/session.h"
 
-class LineEditor : public QLineEdit
+class ScEdit : public QLineEdit
 {
     Q_OBJECT
 
 public:
-    LineEditor(QWidget *parent = 0);
+    ScEdit(QWidget *parent = 0);
 
 private:
     Evaluator* m_evaluator;
