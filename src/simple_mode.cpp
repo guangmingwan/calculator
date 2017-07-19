@@ -99,7 +99,7 @@ void SimpleMode::initUI()
     equalButton->setFixedHeight(equalButton->height()*2);
     zeroButton->setFixedWidth(zeroButton->width()*2);
 
-    equalButton->setObjectName("SimpleButtonIs");
+    equalButton->setObjectName("TextButtonIs");
     clearButton->setStyleSheet("QPushButton { color: #2CA7F8; }");
 }
 
