@@ -7,7 +7,7 @@ SimpleMode::SimpleMode(QWidget *parent)
     : QWidget(parent)
 {
     layout = new QGridLayout(this);
-    editText = new LineEditor();
+    editText = new SimpleEdit();
     clearButton = new TextButton("AC");
     backButton = new TextButton("←");
     divButton = new TextButton("÷");
