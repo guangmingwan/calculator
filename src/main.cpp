@@ -1,5 +1,5 @@
 #include <DApplication>
-#include <dutility.h>
+#include <DWidgetUtil>
 #include "main_window.h"
 
 #include <QFile>
@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
         MainWindow w;
         w.show();
 
-        DUtility::moveToCenter(&w);
+        Dtk::Widget::moveToCenter(&w);
 
         return app.exec();
     }

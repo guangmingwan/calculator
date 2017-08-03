@@ -9,7 +9,7 @@ TARGET = rekols-calculator
 INCLUDEPATH += .
 
 CONFIG += link_pkgconfig c++
-PKGCONFIG += dtkbase dtkwidget dtkutil
+PKGCONFIG += dtkwidget
 
 RESOURCES = rekols-calculator.qrc
 
