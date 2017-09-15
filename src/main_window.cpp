@@ -4,6 +4,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <dthememanager.h>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
     : DMainWindow(parent)
