@@ -9,15 +9,15 @@ ScientificMode::ScientificMode(QWidget *parent)
 {
     m_evaluator = Evaluator::instance();;
 
-    layout = new QVBoxLayout;
-    topLayout = new QHBoxLayout;
-    layout1 = new QHBoxLayout;
-    layout2 = new QHBoxLayout;
-    layout3 = new QHBoxLayout;
-    layout4 = new QHBoxLayout;
+    layout = new QVBoxLayout();
+    topLayout = new QHBoxLayout();
+    layout1 = new QHBoxLayout();
+    layout2 = new QHBoxLayout();
+    layout3 = new QHBoxLayout();
+    layout4 = new QHBoxLayout();
     state = new QLabel(this);
-    display = new ResultDisplay;
-    editor = new ScEdit;
+    display = new ResultDisplay();
+    editor = new ScEdit();
 
     editor->setObjectName("ScEdit");
     state->setObjectName("StateLabel");

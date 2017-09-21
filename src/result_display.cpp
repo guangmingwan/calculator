@@ -11,8 +11,8 @@ ResultDisplay::ResultDisplay(QWidget *parent)
     setWordWrapMode(QTextOption::WrapAnywhere);
 
     QFont font;
-    font.setFamily("Noto Mono");
-    font.setPointSize(13);
+    //font.setFamily("Noto Mono");
+    font.setPointSize(11);
     setFont(font);
 
     m_count = 0;
