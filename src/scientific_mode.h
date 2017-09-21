@@ -22,14 +22,13 @@ public:
     Evaluator* m_evaluator;
 
     QVBoxLayout *layout;
-    QHBoxLayout *topLayout;
     QHBoxLayout *layout1;
     QHBoxLayout *layout2;
     QHBoxLayout *layout3;
     QHBoxLayout *layout4;
     QLabel *state;
 
-    ScButton *btn7;
+    QPushButton *btn7;
     ScButton *btn8;
     ScButton *btn9;
     ScButton *btnDiv;

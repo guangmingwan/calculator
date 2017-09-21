@@ -1,12 +1,9 @@
 #ifndef SCBUTTON_H
 #define SCBUTTON_H
 
+#include <QPushButton>
 
-#include <dpushbutton.h>
-
-DWIDGET_USE_NAMESPACE
-
-class ScButton : public DPushButton
+class ScButton : public QPushButton
 {
     Q_OBJECT
 

@@ -9,8 +9,7 @@ ScientificMode::ScientificMode(QWidget *parent)
 {
     m_evaluator = Evaluator::instance();;
 
-    layout = new QVBoxLayout();
-    topLayout = new QHBoxLayout();
+    layout = new QVBoxLayout(this);
     layout1 = new QHBoxLayout();
     layout2 = new QHBoxLayout();
     layout3 = new QHBoxLayout();
@@ -18,29 +17,6 @@ ScientificMode::ScientificMode(QWidget *parent)
     state = new QLabel(this);
     display = new ResultDisplay();
     editor = new ScEdit();
-
-    editor->setObjectName("ScEdit");
-    state->setObjectName("StateLabel");
-
-    state->setPalette(QToolTip::palette());
-    state->setAutoFillBackground(true);
-    state->setFrameShape(QFrame::Box);
-    state->hide();
-
-    layout1->setSpacing(0);
-    layout2->setSpacing(0);
-    layout3->setSpacing(0);
-    layout4->setSpacing(0);
-
-    layout1->setMargin(0);
-    layout2->setMargin(0);
-    layout3->setMargin(0);
-    layout4->setMargin(0);
-
-    layout->setSpacing(0);
-    layout->setMargin(0);
-
-    layout->setContentsMargins(0, 0, 0, 0);
 
     btn7 = new ScButton("7");
     btn8 = new ScButton("8");
@@ -81,8 +57,6 @@ ScientificMode::ScientificMode(QWidget *parent)
     btnXis = new ScButton("x=");
     btnTan = new ScButton("tan");
     btnArctan = new ScButton("arctan");
-
-    topLayout->addWidget(editor);
 
     layout1->addWidget(btn7);
     layout1->addWidget(btn8);
@@ -125,15 +99,22 @@ ScientificMode::ScientificMode(QWidget *parent)
     layout4->addWidget(btnArctan);
 
     layout->addWidget(display);
-    layout->addLayout(topLayout);
+    layout->addWidget(editor);
     layout->addLayout(layout1);
     layout->addLayout(layout2);
     layout->addLayout(layout3);
     layout->addLayout(layout4);
 
-    layout->setContentsMargins(0, 0, 0, 0);
+    layout->setSpacing(0);
+    layout->setMargin(0);
 
-    setLayout(layout);
+    editor->setObjectName("ScEdit");
+    state->setObjectName("StateLabel");
+
+    state->setPalette(QToolTip::palette());
+    state->setAutoFillBackground(true);
+    state->setFrameShape(QFrame::Box);
+    state->hide();
 
     btnC->setStyleSheet("QPushButton { color: #2CA7F8; }");
 
