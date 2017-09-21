@@ -3,5 +3,6 @@
 	<file>qss/light.qss</file>
     <file>qss/dark.qss</file>
     <file>image/icon.svg</file>
+    <file>translations/zh_CN.qm</file>
   </qresource>
 </RCC>

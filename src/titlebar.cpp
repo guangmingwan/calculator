@@ -11,7 +11,7 @@ TitleBar::TitleBar(QWidget *parent)
     QLabel *iconLabel = new QLabel;
     iconLabel->setPixmap(iconPixmap.scaled(22, 22));
 
-    QLabel *title = new QLabel("calculator");
+    QLabel *title = new QLabel(tr("calculator"));
 
     layout->addWidget(iconLabel);
     layout->addWidget(title);

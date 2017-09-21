@@ -1,9 +1,8 @@
 #include <DApplication>
 #include <DWidgetUtil>
 #include "main_window.h"
-
-#include <QFile>
-#include <QTextStream>
+#include <QTranslator>
+#include <QDebug>
 
 DWIDGET_USE_NAMESPACE
 
@@ -14,16 +13,24 @@ int main(int argc, char *argv[])
     DApplication::loadDXcbPlugin();
     DApplication app(argc, argv);
 
-    const char *descriptionText = QT_TRANSLATE_NOOP("MainWindow", "Rekols计算器功能强大，支持各种表达式、公式输入");
+    const QString descriptionText = QApplication::tr("rekols calculator is a powerful calculator, beautiful and easy to use.");
     const QString acknowledgementLink = "https://github.com/rekols";
 
-    if (app.setSingleInstance("rekols-calculator")) {
+    if (app.setSingleInstance("RCalc")) {
         app.setApplicationVersion("0.1");
         app.setProductIcon(QPixmap::fromImage(QImage(":/image/icon.svg").scaled(80, 80)));
-        app.setApplicationDescription(DApplication::translate("MainWindow", descriptionText) + "\n");
+        app.setApplicationDescription(descriptionText + "\n");
         app.setApplicationAcknowledgementPage(acknowledgementLink);
         app.setWindowIcon(QIcon(":/image/icon.svg"));
         app.loadTranslator();
+
+        QLocale locale;
+        QTranslator tr;
+        tr.load(":/translations/zh_CN.qm");
+
+        if (locale.language() == QLocale::Chinese) {
+            app.installTranslator(&tr);
+        }
 
         MainWindow w;
         w.show();

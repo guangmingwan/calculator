@@ -50,3 +50,17 @@ desktop.path = $$INSTROOT$$APPDIR
 desktop.files = RCalc.desktop
 
 INSTALLS += target desktop
+TRANSLATIONS += translations/zh_CN.ts
+CONFIG *= update_translations release_translations
+
+CONFIG(update_translations) {
+    isEmpty(lupdate):lupdate=lupdate
+    system($$lupdate -no-obsolete -locations none $$_PRO_FILE_)
+}
+CONFIG(release_translations) {
+    isEmpty(lrelease):lrelease=lrelease
+    system($$lrelease $$_PRO_FILE_)
+}
+
+DSR_LANG_PATH += $$DSRDIR/translations
+DEFINES += "DSR_LANG_PATH=\\\"$$DSR_LANG_PATH\\\""

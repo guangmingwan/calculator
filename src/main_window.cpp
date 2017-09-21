@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
     scMode = new ScientificMode();
     titleBar = new TitleBar();
     config = new DSettings();
-    dialog = new DDialog("提示", "您确定要清除历史记录吗？", this);
+    dialog = new DDialog(tr("Tips"), tr("Are you sure wanna clear the history?"), this);
     histroyFilePath = config->configPath() + "/history.txt";
 
     layout->addWidget(simpleMode);
@@ -35,16 +35,16 @@ void MainWindow::initUI()
     this->titlebar()->setWindowFlags(Qt::WindowTitleHint | Qt::WindowMinimizeButtonHint | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint);
     this->titlebar()->setMenu(menu);
 
-    dialog->addButton("取消");
-    dialog->addButton("确定");
+    dialog->addButton(tr("Cancel"));
+    dialog->addButton(tr("Confirm"));
 
-    simpleAction = new QAction("简单模式", this);
-    scientificAction = new QAction("科学计算", this);
-    clearRecord = new QAction("清除记录", this);
-    hideAction = new QAction("隐藏按键", this);
-    showAction = new QAction("显示按键", this);
-    lightAction = new QAction("浅色主题", this);
-    darkAction = new QAction("深色主题", this);
+    simpleAction = new QAction(tr("Simple mode"), this);
+    scientificAction = new QAction(tr("Scientific mode"), this);
+    clearRecord = new QAction(tr("Clear History"), this);
+    hideAction = new QAction(tr("Hide button"), this);
+    showAction = new QAction(tr("Show button"), this);
+    lightAction = new QAction(tr("Light theme"), this);
+    darkAction = new QAction(tr("Dark theme"), this);
 
     menu->addAction(simpleAction);
     menu->addAction(scientificAction);

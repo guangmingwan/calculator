@@ -7,7 +7,7 @@ ResultDisplay::ResultDisplay(QWidget *parent)
     setBackgroundRole(QPalette::Base);
     setLayoutDirection(Qt::LeftToRight);
     setReadOnly(true);
-    //setFocusPolicy(Qt::NoFocus);
+    setFocusPolicy(Qt::NoFocus);
     setWordWrapMode(QTextOption::WrapAnywhere);
 
     QFont font;
