@@ -23,7 +23,7 @@ void ScEdit::autoCalculator()
 
         }else {
             auto formatted = NumberFormatter::format(quantity);
-            auto message = QString("当前结果: %1").arg(formatted);
+            auto message = QString(tr("Current results: %1")).arg(formatted);
             emit autoCalculatorMessage(message);
         }
     }else

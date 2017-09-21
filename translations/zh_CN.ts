@@ -1015,7 +1015,7 @@
     </message>
     <message>
         <source>unknown function or variable</source>
-        <translation type="unfinished"></translation>
+        <translation>未知函数或变量</translation>
     </message>
     <message>
         <source>recursion not supported</source>
@@ -1513,6 +1513,13 @@
     <message>
         <source>rekols calculator is a powerful calculator, beautiful and easy to use.</source>
         <translation>rekols计算器是一个强大的计算器，美观，易于使用</translation>
+    </message>
+</context>
+<context>
+    <name>ScEdit</name>
+    <message>
+        <source>Current results: %1</source>
+        <translation>当前结果： %1</translation>
     </message>
 </context>
 <context>
