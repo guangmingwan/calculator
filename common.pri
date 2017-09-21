@@ -16,7 +16,6 @@ HEADERS += core/book.h \
            core/functions.h \
            core/session.h \
            core/errors.h \
-           core/manualserver.h \
            core/numberformatter.h \
            core/pageserver.h \
            core/settings.h \
@@ -52,7 +51,6 @@ SOURCES += core/book.cpp \
            core/constants.cpp \
            core/evaluator.cpp \
            core/functions.cpp \
-           core/manualserver.cpp \
            core/numberformatter.cpp \
            core/pageserver.cpp \
            core/settings.cpp \
