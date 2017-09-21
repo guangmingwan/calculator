@@ -9,12 +9,12 @@
 MainWindow::MainWindow(QWidget *parent)
     : DMainWindow(parent)
 {
-    menu = new QMenu;
-    mainWidget = new QWidget;
-    layout = new QStackedLayout;
-    simpleMode = new SimpleMode;
-    scMode = new ScientificMode;
-    titleBar = new TitleBar;
+    menu = new QMenu();
+    mainWidget = new QWidget();
+    layout = new QStackedLayout();
+    simpleMode = new SimpleMode();
+    scMode = new ScientificMode();
+    titleBar = new TitleBar();
     config = new DSettings();
     dialog = new DDialog("提示", "您确定要清除历史记录吗？", this);
     histroyFilePath = config->configPath() + "/history.txt";
@@ -72,7 +72,7 @@ void MainWindow::initUI()
 
 void MainWindow::initTheme()
 {
-    if (config->settings->value("theme").toString() == "light") {
+    if (config->getOption("theme") == "light") {
         lightAction->setVisible(false);
         darkAction->setVisible(true);
         switchToLightTheme();
@@ -85,7 +85,7 @@ void MainWindow::initTheme()
 
 void MainWindow::initMode()
 {
-    if (config->getDefaultMode() == "simple") {
+    if (config->getOption("mode") == "simple") {
         simpleAction->setVisible(false);
         scientificAction->setVisible(true);
         clearRecord->setVisible(false);
@@ -100,7 +100,7 @@ void MainWindow::initMode()
 
 void MainWindow::initMenu()
 {
-    if (config->settings->value("keyboard").toString() == "show") {
+    if (config->getOption("keyboard") == "show") {
         showAction->setVisible(false);
         hideAction->setVisible(true);
         showKeyBoard();
@@ -110,7 +110,7 @@ void MainWindow::initMenu()
         hideKeyBoard();
     }
 
-    if (config->settings->value("mode").toString() == "simple") {
+    if (config->getOption("mode") == "simple") {
         simpleAction->setVisible(false);
         scientificAction->setVisible(true);
         showAction->setVisible(false);
@@ -122,7 +122,7 @@ void MainWindow::initMenu()
         clearRecord->setVisible(true);
     }
 
-    if (config->settings->value("theme").toString() == "light") {
+    if (config->getOption("theme") == "light") {
         lightAction->setVisible(false);
         darkAction->setVisible(true);
     }else {
@@ -147,9 +147,9 @@ void MainWindow::loadHistory()
 void MainWindow::switchToSimpleMode()
 {
     setFixedSize(260, 370);
-    layout->setCurrentIndex(0);
 
-    config->settings->setValue("mode", "simple");
+    layout->setCurrentIndex(0);
+    config->setOption("mode", "simple");
 
     initMenu();
 }
@@ -157,10 +157,10 @@ void MainWindow::switchToSimpleMode()
 void MainWindow::switchToScientificMode()
 {
     setFixedSize(550, 450);
+
     layout->setCurrentIndex(1);
     scMode->editor->setFocus();
-
-    config->settings->setValue("mode", "scientific");
+    config->setOption("mode", "scientific");
 
     initMenu();
 }
@@ -174,8 +174,7 @@ void MainWindow::switchToLightTheme()
     file.close();
 
     DThemeManager::instance()->setTheme("light");
-
-    config->settings->setValue("theme", "light");
+    config->setOption("theme", "light");
 
     initMenu();
 }
@@ -189,8 +188,7 @@ void MainWindow::switchToDarkTheme()
     file.close();
 
     DThemeManager::instance()->setTheme("dark");
-
-    config->settings->setValue("theme", "dark");
+    config->setOption("theme", "dark");
 
     initMenu();
 }
@@ -231,7 +229,7 @@ void MainWindow::dialogButtonClicked(int index)
 
 void MainWindow::showKeyBoard()
 {
-    config->settings->setValue("keyboard", "show");
+    config->setOption("keyboard", "show");
 
     hideAction->setVisible(true);
     showAction->setVisible(false);
@@ -277,7 +275,7 @@ void MainWindow::showKeyBoard()
 
 void MainWindow::hideKeyBoard()
 {
-    config->settings->setValue("keyboard", "hide");
+    config->setOption("keyboard", "hide");
 
     hideAction->setVisible(false);
     showAction->setVisible(true);

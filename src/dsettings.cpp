@@ -19,12 +19,17 @@ DSettings::DSettings(QObject *parent)
     }
 }
 
-QString DSettings::getDefaultMode()
-{
-    return settings->value("mode").toString();
-}
-
 QString DSettings::configPath()
 {
     return QDir(QDir(QStandardPaths::standardLocations(QStandardPaths::ConfigLocation).first()).filePath(qApp->organizationName())).filePath(qApp->applicationName());
+}
+
+QString DSettings::getOption(const QString &key)
+{
+    return settings->value(key).toString();
+}
+
+void DSettings::setOption(const QString &key, const QString &value)
+{
+    settings->setValue(key, value);
 }

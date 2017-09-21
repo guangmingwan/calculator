@@ -13,7 +13,8 @@ public:
 
     QSettings *settings;
     QString configPath();
-    QString getDefaultMode();
+    QString getOption(const QString &key);
+    void setOption(const QString &key, const QString &value);
 };
 
 #endif // SETTTINGS_H

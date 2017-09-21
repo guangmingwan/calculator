@@ -11,11 +11,11 @@ void SimpleEdit::changeFontSize()
     QFont font;
 
     if (text().size() <= 10) {
-        font.setPointSize(20);
+        font.setPointSize(18);
     } else if (text().size() > 10) {
-        font.setPointSize(15);
+        font.setPointSize(12);
     } else if (text().size() > 15) {
-        font.setPointSize(10);
+        font.setPointSize(9);
     }
 
     this->setFont(font);
