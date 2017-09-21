@@ -5,13 +5,13 @@
 QT += core widgets gui
 
 TEMPLATE = app
-TARGET = calculator
+TARGET = RCalc
 INCLUDEPATH += .
 
 CONFIG += link_pkgconfig c++
 PKGCONFIG += dtkwidget
 
-RESOURCES = calculator.qrc
+RESOURCES = RCalc.qrc
 
 include(common.pri)
 
@@ -47,6 +47,6 @@ isEmpty(APPDIR):APPDIR=/usr/share/applications
 
 target.path = $$INSTROOT$$BINDIR
 desktop.path = $$INSTROOT$$APPDIR
-desktop.files = rekols-calculator.desktop
+desktop.files = RCalc.desktop
 
 INSTALLS += target desktop

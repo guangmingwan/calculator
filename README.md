@@ -1,6 +1,6 @@
-## Rekols Calculator
+## RCalc
 
-A simple calculator for you.
+A powerful calculator, it is very beautiful and easy to use.
 
 Thank you very much [SpeedCrunch](https://bitbucket.org/heldercorreia/speedcrunch) project, this project used a lot of his code.
 

@@ -1,11 +1,11 @@
 [Desktop Entry]
 Categories=Application;Utility;
 Encoding=UTF-8
-Exec=/usr/bin/rekols-calculator
+Exec=/usr/bin/RCalc
 Icon=accessories-calculator
-Name=Rekols Calculator
-Name[zh_CN]=Rekols计算器
-Name[zh_TW]=Rekols计算器
+Name=RCalc
+Name[zh_CN]=R计算器
+Name[zh_TW]=R计算器
 StartupNotify=false
 Terminal=false
 Type=Application
