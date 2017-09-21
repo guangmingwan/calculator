@@ -1,4 +1,4 @@
-## RCalc
+# Rekols Calculator
 
 A powerful calculator, it is very beautiful and easy to use.
 
