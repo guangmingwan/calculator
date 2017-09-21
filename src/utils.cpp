@@ -1,13 +1,14 @@
 #include "utils.h"
+#include <QFile>
 
-namespace Utils
+QString Utils::getQssContent(const QString &path)
 {
-    QChar getLasterChar(QString text)
-    {
-        QString::const_iterator laster = text.replace("×", "*").replace("÷", "/").end();
+    QString content;
+    QFile file(path);
 
-        laster--;
+    file.open(QIODevice::ReadOnly);
+    content = file.readAll();
+    file.close();
 
-        return *laster;
-    }
+    return content;
 }

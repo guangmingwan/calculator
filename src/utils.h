@@ -1,7 +1,6 @@
-#include <QApplication>
-#include <QWidget>
+#include <QObject>
 
 namespace Utils
 {
-    QChar getLasterChar(QString text);
+    QString getQssContent(const QString &path);
 }

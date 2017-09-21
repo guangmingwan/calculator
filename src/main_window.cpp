@@ -5,6 +5,7 @@
 #include <QTextStream>
 #include <dthememanager.h>
 #include <QDebug>
+#include "utils.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : DMainWindow(parent)
@@ -167,11 +168,7 @@ void MainWindow::switchToScientificMode()
 
 void MainWindow::switchToLightTheme()
 {
-    QFile file(":/qss/light.qss");
-    file.open(QFile::ReadOnly);
-    QTextStream qss(&file);
-    qApp->setStyleSheet(qss.readAll());
-    file.close();
+    qApp->setStyleSheet(Utils::getQssContent(":/qss/light.qss"));
 
     DThemeManager::instance()->setTheme("light");
     config->setOption("theme", "light");
@@ -181,11 +178,7 @@ void MainWindow::switchToLightTheme()
 
 void MainWindow::switchToDarkTheme()
 {
-    QFile file(":/qss/dark.qss");
-    file.open(QFile::ReadOnly);
-    QTextStream qss(&file);
-    qApp->setStyleSheet(qss.readAll());
-    file.close();
+    qApp->setStyleSheet(Utils::getQssContent(":/qss/dark.qss"));
 
     DThemeManager::instance()->setTheme("dark");
     config->setOption("theme", "dark");
