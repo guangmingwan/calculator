@@ -1518,7 +1518,7 @@
 <context>
     <name>ScEdit</name>
     <message>
-        <source>Current results: %1</source>
+        <source>Current result: %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
