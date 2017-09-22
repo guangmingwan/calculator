@@ -1003,7 +1003,7 @@
     </message>
     <message>
         <source>compile error</source>
-        <translation type="unfinished"></translation>
+        <translation>表达式错误</translation>
     </message>
     <message>
         <source>unit must not be zero</source>
@@ -1519,7 +1519,7 @@
     <name>ScEdit</name>
     <message>
         <source>Current results: %1</source>
-        <translation>当前结果： %1</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
