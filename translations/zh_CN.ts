@@ -1519,7 +1519,7 @@
     <name>ScEdit</name>
     <message>
         <source>Current result: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>当前结果： %1</translation>
     </message>
 </context>
 <context>
