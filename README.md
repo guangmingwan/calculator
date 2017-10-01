@@ -4,6 +4,10 @@ A powerful calculator, it is very beautiful and easy to use.
 
 Thank you very much [SpeedCrunch](https://bitbucket.org/heldercorreia/speedcrunch) project, this project used a lot of his code.
 
+![image](screenshot1.png)
+
+![image](screenshot2.png)
+
 ### Build dependencies
 
 `sudo apt install libdtkbase-dev libdtkwidget-dev libdtkutil-dev`
