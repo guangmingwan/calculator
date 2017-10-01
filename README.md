@@ -10,7 +10,7 @@ Thank you very much [SpeedCrunch](https://bitbucket.org/heldercorreia/speedcrunc
 
 ### Build dependencies
 
-`sudo apt install libdtkbase-dev libdtkwidget-dev libdtkutil-dev`
+`sudo apt install libdtkcore-dev libdtkwidget-dev`
 
 ### Runtime dependencies
 
@@ -22,9 +22,6 @@ Thank you very much [SpeedCrunch](https://bitbucket.org/heldercorreia/speedcrunc
 
 * [deepin-tool-kit](https://github.com/linuxdeepin/deepin-tool-kit)
 
-in deepin, you can:
-
-`sudo apt install libqt5core5a libqt5gui5 libqt5widgets5 libdtkwidget libdtkbase libdtkutil`
 
 ## License
 
