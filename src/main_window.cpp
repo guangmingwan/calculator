@@ -44,6 +44,7 @@ void MainWindow::initUI()
     hideAction = new QAction(tr("Hide button"), this);
     showAction = new QAction(tr("Show button"), this);
     lightAction = new QAction(tr("Light theme"), this);
+
     darkAction = new QAction(tr("Dark theme"), this);
 
     menu->addAction(simpleAction);

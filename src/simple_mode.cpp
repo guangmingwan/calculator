@@ -220,7 +220,11 @@ void SimpleMode::on_equal_button_clicked()
 
     m_evaluator->initializeBuiltInVariables();
     m_evaluator->autoFix(editText->text());
-    m_evaluator->setExpression(editText->text().replace("×", "*").replace("÷", "/"));
+    m_evaluator->setExpression(editText->text()
+                               .replace("×", "*")
+                               .replace("÷", "/")
+                               .replace("x", "*")
+                               .replace("X", "*"));
 
     Quantity rn = m_evaluator->evalUpdateAns();
     QString result = DMath::format(rn, Format::Fixed());

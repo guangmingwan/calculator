@@ -1,5 +1,6 @@
 #include "titlebar.h"
 #include <QLabel>
+#include <QSvgWidget>
 
 TitleBar::TitleBar(QWidget *parent)
     : QWidget(parent)
@@ -7,13 +8,12 @@ TitleBar::TitleBar(QWidget *parent)
     layout = new QHBoxLayout(this);
     layout->setContentsMargins(0, 0, 0, 0);
 
-    QPixmap iconPixmap = QPixmap(":/image/icon.svg");
-    QLabel *iconLabel = new QLabel;
-    iconLabel->setPixmap(iconPixmap.scaled(22, 22));
+    QSvgWidget *iconWidget = new QSvgWidget(":/image/icon.svg");
+    iconWidget->setFixedSize(22, 22);
 
     QLabel *title = new QLabel(tr("calculator"));
 
-    layout->addWidget(iconLabel);
+    layout->addWidget(iconWidget);
     layout->addWidget(title);
     layout->addStretch();
 
