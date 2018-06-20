@@ -8,10 +8,6 @@ Thank you very much [SpeedCrunch](https://bitbucket.org/heldercorreia/speedcrunc
 
 ![image](screenshot2.png)
 
-### Build dependencies
-
-`sudo apt install libdtkcore-dev libdtkwidget-dev`
-
 ### Runtime dependencies
 
 * qt5widgets
@@ -19,8 +15,6 @@ Thank you very much [SpeedCrunch](https://bitbucket.org/heldercorreia/speedcrunc
 * qt5gui
 
 * qt5core
-
-* [deepin-tool-kit](https://github.com/linuxdeepin/deepin-tool-kit)
 
 
 ## License
