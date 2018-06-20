@@ -9,7 +9,7 @@ TARGET = RCalc
 INCLUDEPATH += .
 
 CONFIG += link_pkgconfig c++
-PKGCONFIG += dtkwidget
+#PKGCONFIG += dtkwidget
 
 RESOURCES = RCalc.qrc
 

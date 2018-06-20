@@ -1,28 +1,28 @@
-#include <DApplication>
-#include <DWidgetUtil>
+#include <QApplication>
+//#include <DWidgetUtil>
 #include "main_window.h"
 #include <QTranslator>
 #include <QDebug>
 
-DWIDGET_USE_NAMESPACE
+//DWIDGET_USE_NAMESPACE
 
 int main(int argc, char *argv[])
 {
     //qputenv("QT_SCALE_FACTOR", "1.3");
 
-    DApplication::loadDXcbPlugin();
-    DApplication app(argc, argv);
+    //DApplication::loadDXcbPlugin();
+    QApplication app(argc, argv);
 
     const QString descriptionText = QApplication::tr("rekols calculator is a powerful calculator, beautiful and easy to use.");
     const QString acknowledgementLink = "https://github.com/rekols";
 
-    if (app.setSingleInstance("RCalc")) {
+    //if (app.setSingleInstance("RCalc")) {
         app.setApplicationVersion("0.1");
-        app.setProductIcon(QPixmap::fromImage(QImage(":/image/icon.svg").scaled(80, 80)));
-        app.setApplicationDescription(descriptionText + "\n");
-        app.setApplicationAcknowledgementPage(acknowledgementLink);
+        //app.setProductIcon(QPixmap::fromImage(QImage(":/image/icon.svg").scaled(80, 80)));
+        //app.setApplicationDescription(descriptionText + "\n");
+        //app.setApplicationAcknowledgementPage(acknowledgementLink);
         app.setWindowIcon(QIcon(":/image/icon.svg"));
-        app.loadTranslator();
+        //app.loadTranslator();
 
         QLocale locale;
         QTranslator tr;
@@ -35,10 +35,10 @@ int main(int argc, char *argv[])
         MainWindow w;
         w.show();
 
-        Dtk::Widget::moveToCenter(&w);
+        //Dtk::Widget::moveToCenter(&w);
 
         return app.exec();
-    }
+    //}
 
-    return 0;
+    //return 0;
 }

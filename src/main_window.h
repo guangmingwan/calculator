@@ -1,18 +1,18 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <DMainWindow>
+#include <QMainWindow>
 #include <QStackedLayout>
 #include "titlebar.h"
 #include "simple_mode.h"
 #include "scientific_mode.h"
 #include <QMenu>
 #include "dsettings.h"
-#include <ddialog.h>
+#include <Qdialog.h>
 
-DWIDGET_USE_NAMESPACE
+//DWIDGET_USE_NAMESPACE
 
-class MainWindow : public DMainWindow
+class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
@@ -26,7 +26,7 @@ private:
     TitleBar *titleBar;
     SimpleMode *simpleMode;
     ScientificMode *scMode;
-    DDialog *dialog;
+    QDialog *dialog;
 
     QAction *simpleAction;
     QAction *scientificAction;

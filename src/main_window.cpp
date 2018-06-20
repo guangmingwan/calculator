@@ -1,23 +1,23 @@
 #include "main_window.h"
-#include <DTitlebar>
+#include <QMenubar>
 #include <QApplication>
 #include <QFile>
 #include <QTextStream>
-#include <dthememanager.h>
+//#include <dthememanager.h>
 #include <QDebug>
 #include "utils.h"
 
 MainWindow::MainWindow(QWidget *parent)
-    : DMainWindow(parent)
+    : QMainWindow(parent)
 {
-    menu = new QMenu();
+    //menu = new QMenu();
     mainWidget = new QWidget();
     layout = new QStackedLayout();
     simpleMode = new SimpleMode();
     scMode = new ScientificMode();
     titleBar = new TitleBar();
     config = new DSettings();
-    dialog = new DDialog(tr("Tips"), tr("Are you sure wanna clear the history?"), this);
+    //dialog = new QDialog(tr("Tips"), tr("Are you sure wanna clear the history?"), this);
     histroyFilePath = config->configPath() + "/history.txt";
 
     layout->addWidget(simpleMode);
@@ -31,12 +31,18 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::initUI()
 {
-    this->titlebar()->setCustomWidget(titleBar, Qt::AlignVCenter, false);
-    this->titlebar()->setWindowFlags(Qt::WindowTitleHint | Qt::WindowMinimizeButtonHint | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint);
-    this->titlebar()->setMenu(menu);
 
-    dialog->addButton(tr("Cancel"));
-    dialog->addButton(tr("Confirm"));
+    if (this->objectName().isEmpty())
+        this->setObjectName(QStringLiteral("MainWindow"));
+
+
+
+//    this->titlebar()->setCustomWidget(titleBar, Qt::AlignVCenter, false);
+//    this->titlebar()->setWindowFlags(Qt::WindowTitleHint | Qt::WindowMinimizeButtonHint | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint);
+//    this->titlebar()->setMenu(menu);
+    //this->setMenuBar(pMenuBar);
+//    dialog->addButton(tr("Cancel"));
+//    dialog->addButton(tr("Confirm"));
 
     simpleAction = new QAction(tr("Simple mode"), this);
     scientificAction = new QAction(tr("Scientific mode"), this);
@@ -47,6 +53,14 @@ void MainWindow::initUI()
 
     darkAction = new QAction(tr("Dark theme"), this);
 
+
+    //1. 获取菜单栏
+    QMenuBar* menuBar = new QMenuBar(0);
+    menu = menuBar->addMenu(tr("&Options"));
+    // pMenuBar->setVisible(true);
+    //pMenuBar->addMenu("&File");
+    //pMenuBar->addMenu(menu);
+
     menu->addAction(simpleAction);
     menu->addAction(scientificAction);
     menu->addAction(clearRecord);
@@ -54,6 +68,7 @@ void MainWindow::initUI()
     menu->addAction(showAction);
     menu->addAction(lightAction);
     menu->addAction(darkAction);
+
 
     initTheme();
     initMode();
@@ -67,7 +82,7 @@ void MainWindow::initUI()
     connect(showAction, &QAction::triggered, this, &MainWindow::showKeyBoard);
     connect(lightAction, &QAction::triggered, this, &MainWindow::switchToLightTheme);
     connect(darkAction, &QAction::triggered, this, &MainWindow::switchToDarkTheme);
-    connect(dialog, &DDialog::buttonClicked, this, &MainWindow::dialogButtonClicked);
+    //connect(dialog, &DDialog::buttonClicked, this, &MainWindow::dialogButtonClicked);
 
     scMode->display->moveCursor(QTextCursor::End);
 }
@@ -171,7 +186,7 @@ void MainWindow::switchToLightTheme()
 {
     qApp->setStyleSheet(Utils::getQssContent(":/qss/light.qss"));
 
-    DThemeManager::instance()->setTheme("light");
+    //DThemeManager::instance()->setTheme("light");
     config->setOption("theme", "light");
 
     initMenu();
@@ -181,7 +196,7 @@ void MainWindow::switchToDarkTheme()
 {
     qApp->setStyleSheet(Utils::getQssContent(":/qss/dark.qss"));
 
-    DThemeManager::instance()->setTheme("dark");
+    //DThemeManager::instance()->setTheme("dark");
     config->setOption("theme", "dark");
 
     initMenu();
