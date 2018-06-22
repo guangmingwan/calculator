@@ -1,4 +1,4 @@
-// This file is part of the SpeedCrunch project
+﻿// This file is part of the SpeedCrunch project
 // Copyright (C) 2015 Pol Welter <polwelter@gmail.com>
 // Copyright (C) 2016 @heldercorreia
 //

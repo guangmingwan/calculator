@@ -1,4 +1,4 @@
-// This file is part of the SpeedCrunch project
+﻿// This file is part of the SpeedCrunch project
 // Copyright (C) 2007 Ariya Hidayat <ariya@kde.org>
 // Copyright (C) 2007, 2009, 2011, 2013, 2016 @heldercorreia
 // Copyright (C) 2009 Andreas Scherer <andreas_coder@freenet.de>
@@ -368,7 +368,6 @@ void Constants::Private::populate()
     PUSH_CONSTANT_NO_UNIT("π (Archimedes' constant pi)", "3.1415926535897932");
     PUSH_CONSTANT_NO_UNIT("e (Euler's number)", "2.7182818284590452");
     PUSH_CONSTANT_NO_UNIT("φ (golden ratio)", "1.6180339887498948");
-
     // General Physics.
     PUSH_CONSTANT_CODATA("Characteristic Impedance of Vacuum", "376.730313461", "Ω",          "exact",           "2016-03-28");
     PUSH_CONSTANT_CODATA("Dirac's Constant",          "1.054571800e-34",        "J·s",        "0.000000013e-34", "2016-03-28");  // CODATA name: Planck constant over 2 pi

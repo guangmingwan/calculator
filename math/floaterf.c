@@ -33,6 +33,7 @@
 #include "floatconst.h"
 #include "floatcommon.h"
 #include "floatexp.h"
+#define _USE_MATH_DEFINES
 #include "math.h"
 
 /*

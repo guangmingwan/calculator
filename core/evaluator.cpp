@@ -1,4 +1,4 @@
-// This file is part of the SpeedCrunch project
+﻿// This file is part of the SpeedCrunch project
 // Copyright (C) 2004 Ariya Hidayat <ariya@kde.org>
 // Copyright (C) 2005, 2006 Johan Thelin <e8johan@gmail.com>
 // Copyright (C) 2007-2016 @heldercorreia
@@ -708,6 +708,7 @@ Evaluator::Evaluator()
 void Evaluator::initializeBuiltInVariables()
 {
     setVariable(QLatin1String("e"), DMath::e(), Variable::BuiltIn);
+
     setVariable(QString::fromUtf8("ℯ"), DMath::e(), Variable::BuiltIn);
 
     setVariable(QLatin1String("pi"), DMath::pi(), Variable::BuiltIn);

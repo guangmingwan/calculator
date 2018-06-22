@@ -1,4 +1,4 @@
-#include "simple_mode.h"
+﻿#include "simple_mode.h"
 #include "utils.h"
 
 typedef Quantity::Format Format;
@@ -9,19 +9,21 @@ SimpleMode::SimpleMode(QWidget *parent)
     layout = new QGridLayout(this);
     editText = new SimpleEdit();
     clearButton = new SimpleButton("AC");
-    backButton = new SimpleButton("←");
-    divButton = new SimpleButton("÷");
-    multButton = new SimpleButton("×");
+
+    backButton = new SimpleButton(QString::fromWCharArray(L"←"));
+
+    divButton = new SimpleButton(QString::fromWCharArray(L"÷"));
+    multButton = new SimpleButton(QString::fromWCharArray(L"×"));
 
     sevenButton = new SimpleButton("7");
     eightButton = new SimpleButton("8");
     nineButton = new SimpleButton("9");
-    minusButton = new SimpleButton("－");
+    minusButton = new SimpleButton(QString::fromWCharArray(L"－"));
 
     fourButton = new SimpleButton("4");
     fiveButton = new SimpleButton("5");
     sixButton = new SimpleButton("6");
-    plusButton = new SimpleButton("＋");
+    plusButton = new SimpleButton(QString::fromWCharArray(L"＋"));
 
     oneButton = new SimpleButton("1");
     twoButton = new SimpleButton("2");

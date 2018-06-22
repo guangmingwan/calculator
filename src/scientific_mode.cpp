@@ -1,4 +1,4 @@
-#include "scientific_mode.h"
+﻿#include "scientific_mode.h"
 #include <QToolTip>
 #include <QKeyEvent>
 

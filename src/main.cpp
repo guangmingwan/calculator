@@ -1,14 +1,16 @@
-#include <QApplication>
+﻿#include <QApplication>
 //#include <DWidgetUtil>
 #include "main_window.h"
 #include <QTranslator>
 #include <QDebug>
+#include <QTextCodec>
 
 //DWIDGET_USE_NAMESPACE
 
 int main(int argc, char *argv[])
 {
-    //qputenv("QT_SCALE_FACTOR", "1.3");
+    QString ch = QString::fromWCharArray(L"程序启动了");
+    qDebug()<< ch <<endl;
 
     //DApplication::loadDXcbPlugin();
     QApplication app(argc, argv);
